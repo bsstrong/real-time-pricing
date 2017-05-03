@@ -1,0 +1,55 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="com.LoanTek.API.Pricing.Partners.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DataContextLoanTekWrite" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=sqllb.loantek.com;Initial Catalog=LoanTek;Persist Security Info=True;User ID=sa;Password=!MANTLE7&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=sqllb.loantek.com;Initial Catalog=LoanTek;Persist Security Info=True;User ID=sa;Password=!MANTLE7</Value>
+    </Setting>
+    <Setting Name="DataContextLoanTekRead" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=sqllb.loantek.com;Initial Catalog=LoanTek;Persist Security Info=True;User ID=sa;Password=!MANTLE7;ApplicationIntent=ReadOnly&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=sqllb.loantek.com;Initial Catalog=LoanTek;Persist Security Info=True;User ID=sa;Password=!MANTLE7;ApplicationIntent=ReadOnly</Value>
+    </Setting>
+    <Setting Name="DataContextLeadsWrite" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=sqllb.loantek.com;Initial Catalog=Leads;Persist Security Info=True;User ID=sa;Password=!MANTLE7&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=sqllb.loantek.com;Initial Catalog=Leads;Persist Security Info=True;User ID=sa;Password=!MANTLE7</Value>
+    </Setting>
+    <Setting Name="DataContextLeadsRead" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=sqllb.loantek.com;Initial Catalog=Leads;Persist Security Info=True;User ID=sa;Password=!MANTLE7;ApplicationIntent=ReadOnly&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=sqllb.loantek.com;Initial Catalog=Leads;Persist Security Info=True;User ID=sa;Password=!MANTLE7;ApplicationIntent=ReadOnly</Value>
+    </Setting>
+    <Setting Name="DataContextQuoteSystemsWrite" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=sqllb.loantek.com;Initial Catalog=QuoteSystems;Persist Security Info=True;User ID=sa;Password=!MANTLE7&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=sqllb.loantek.com;Initial Catalog=QuoteSystems;Persist Security Info=True;User ID=sa;Password=!MANTLE7</Value>
+    </Setting>
+    <Setting Name="DataContextQuoteSystemsRead" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=sqllb.loantek.com;Initial Catalog=QuoteSystems;Persist Security Info=True;User ID=sa;Password=!MANTLE7;ApplicationIntent=ReadOnly&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=sqllb.loantek.com;Initial Catalog=QuoteSystems;Persist Security Info=True;User ID=sa;Password=!MANTLE7;ApplicationIntent=ReadOnly</Value>
+    </Setting>
+    <Setting Name="DataContextQuoteDataRead" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=sqllb.loantek.com;Initial Catalog=QuoteArchive;Persist Security Info=True;User ID=sa;Password=!MANTLE7;ApplicationIntent=ReadOnly&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=sqllb.loantek.com;Initial Catalog=QuoteArchive;Persist Security Info=True;User ID=sa;Password=!MANTLE7;ApplicationIntent=ReadOnly</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

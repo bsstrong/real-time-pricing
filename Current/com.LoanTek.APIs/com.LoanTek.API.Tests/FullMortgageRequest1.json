@@ -1,0 +1,43 @@
+﻿{
+    "PassThroughItems": [ { "Item": "A Pass Through Item" } ],
+    "CustomQuoteResponseJson": null,
+    "UserId": 1925,
+    "ClientDefinedId": "LT-Testcdc6fa7a9da67265",
+    "Form": {
+        "ForType": 10,
+        "QuotingChannelType": 2,
+        "Amount": 500000.0,
+        "CustomData": null,
+        "LoanToValue": 79.60,
+        "CreditScore": 720,
+        "ZipCode": "91945",
+        "LoanPurposeType": 1,
+        "PropertyTypeType": 1,
+        "PropertyUseType": 1,
+        "LockPeriodType": -1,
+        "BestExecutionMethodType": 1,
+        "ProductFamilyTypes": [ "CONVENTIONAL" ],
+        "ProductClassTypes": null,
+        "ProductTypeTypes": null,
+        "ProductTermTypes": [
+            "A5_1",
+            "F30"
+        ],
+        "QuoteTypesToReturn": [ -1, 0, 1 ],
+        "CashOutAmount": 0,
+        "CombinedLoanToValue": -1.0,
+        "DebtToIncomeRatio": 0.0,
+        "HasProofOfIncome": true,
+        "DeclaredBankruptcyLast7Years": false,
+        "ForeclosedLast7Years": false,
+        "IsFirstTimeBuyer": false,
+        "IsNewConstruction": false,
+        "EscrowsWaived": false,
+        "LeadGenerationMethodType": 1,
+        "SecondMortgageAmount": 0,
+        "VAFirstTime": false,
+        "VADisabled": false,
+        "VATypeType": 0,
+        "PropertyValue": 30500000
+    }
+}

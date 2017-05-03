@@ -1,0 +1,1 @@
+{"Host":"*","Port":80,"AssemblyName":"com.LoanTek.API.Pricing.Partners.dll","CacheHost":"cachelb.loantek.com","CachePort":6379,"SqlHost":"sqllb.loantek.com"}

@@ -1,0 +1,334 @@
+﻿@using System.Web.UI.HtmlControls
+@model com.LoanTek.API.Demo.Controllers.MortgageRequestController.IndexModel
+@{
+    ViewBag.Title = "";
+    //set defaults / randoms
+    Random r = new Random();
+    Model.Form.Amount = r.Next(250000, 490000);
+}
+<style>
+    .row {
+        margin-left: -10px;
+    }
+
+    .alert > p {
+        margin-bottom: 4px;
+    }
+
+    .result {
+        font-size: 95%;
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 0;
+    }
+
+    li {
+        display: inline;
+        padding-right: 4px;
+    }
+
+    h4 {
+        font-size: 98%;
+    }
+</style>
+<div>
+    <h3>Live Mortgage Quote</h3>
+    @using (Html.BeginForm("Quote", "MortgageRequest", FormMethod.Post, new { role = "form", id = "QuoteForm" }))
+    {
+        <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="Amount">Amount</span>
+                    @Html.TextBoxFor(model => model.Form.Amount, null, new { @class = "form-control", @type = "number" })
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="LoanToValue">LoanToValue</span>
+                    <input class="form-control" id="LoanToValue" name="Form.LoanToValue" placeholder="79.60" step="0.01" type="number" value="79.60">
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="CreditScore">CreditScore</span>
+                    <input class="form-control" id="CreditScore" name="Form.CreditScore" placeholder="720" type="number" value="720">
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="ZipCode">ZipCode</span>
+                    <input class="form-control" id="ZipCode" name="Form.ZipCode" placeholder="83702" type="text" value="83702">
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="LoanPurposeType">LoanPurposeType</span>
+                    <select id="LoanPurposeType" name="Form.LoanPurposeType" class="form-control">
+                        <option value="NotSpecified">NotSpecified</option>
+                        <option value="Purchase" selected="selected">Purchase</option>
+                        <option value="Refinance">Refinance</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="PropertyTypeType">PropertyTypeType</span>
+                    <select id="PropertyTypeType" name="Form.PropertyTypeType" class="form-control">
+                        <option value="Condo">Condo</option>
+                        <option value="Condo4orFewerStories">Condo 4 or Fewer Stories</option>
+                        <option value="Condo5OrMoreStories">Condo 5 Or More Stories</option>
+                        <option value="Coop">Coop</option>
+                        <option value="Leasehold">Leasehold</option>
+                        <option value="MobileOrManufactured">Mobile Or Manufactured</option>
+                        <option value="Modular">Modular</option>
+                        <option value="MultiDwelling">MultiDwelling</option>
+                        <option value="MultiFamily2Units">MultiFamily 2 Units</option>
+                        <option value="MultiFamily3Units">MultiFamily 3 Units</option>
+                        <option value="MultiFamily4Units">MultiFamily 4 Units</option>
+                        <option value="NotSpecified">Not Specified</option>
+                        <option value="PUD">PUD</option>
+                        <option value="SingleFamily" selected="selected">Single Family</option>
+                        <option value="Townhouse">Townhouse</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="PropertyUseType">PropertyUseType</span>
+                    <select id="PropertyUseType" name="Form.PropertyUseType" class="form-control">
+                        <option value="InvestmentOrRental">Investment Or Rental</option>
+                        <option value="NotSpecified">Not Specified</option>
+                        <option value="PrimaryResidence" selected="selected">Primary Residence</option>
+                        <option value="SecondaryOrVacation">Secondary Or Vacation</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon">ApiServer</span>
+                    @Html.DropDownListFor(model => model.ApiServer, Model.ApiServers, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="PropertyUseType">Wait until complete to show </span>
+                    <span class="input-group-addon">
+                        @Html.CheckBoxFor(model => model.WaitUntilCompleted, new { @class = "form-control1" })
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="btn btn-primary" data-text="Quote" onclick="getQuotes()">Quote</span> &nbsp;
+                <span class="btn btn-primary" data-text="Quote2" onclick="getQuotes2()">Quote 2</span> &nbsp;
+                <span class="btn btn-primary" data-text="Quote3" onclick="getQuotes3()">Quote 3</span> &nbsp;
+                <span class="btn btn-danger" data-text="Reload" onclick="reload()">Clear</span>
+            </div>
+        </div>
+
+        <div class="hidden row">
+            <div class="input-group">
+                <span class="btn btn-primary" data-text="checkForQuotes" onclick="getQuotes3()">Test</span>
+            </div>
+        </div>
+    }
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-sm-4 col-xs-12"><h4>Quote1: PostAsJson - data send and received as Objects</h4><div id="dynamicTable"></div></div>
+    <div class="col-sm-4 col-xs-12"><h4>Quote2: PostAsString - Json parsed in script/browser</h4><div id="dynamicTable2"></div></div>
+    <div class="col-sm-4 col-xs-12"><h4>Quote3: Hybrid of both 1 and 2</h4><div id="dynamicTable3"></div></div>
+</div>
+
+<script>
+    var interval = 500;  // 1000 = 1 second
+    var intervalID1;
+    var intervalID2;
+    var intervalID3;
+    var intervalCountsID;
+    var intervalCountsID2;
+    var intervalCountsID3;
+
+    function checkForQuotes() {
+        var url = '/MortgageRequest/GetResults';
+        //console.debug("GetResults -url:" + url);
+        $.get(url).done(function (obj) {
+            //console.log(obj);
+            if (obj != null && obj.Content != null) {
+                var quote = obj.Content[0];
+                //console.log(quote);
+                if (quote != null) {
+                    //var newItem = "<div class='alert alert-info'><div><strong> Time from Submit: </strong> " + obj.TimeInMillisecondsFromSubmit + "ms <strong> Time to Send/Receive:</strong> " + obj.TimeInMillisecondsToProcess + "ms <strong> Time to Process: </strong> " + obj.TimeInMillisecondsToProcessServer + "ms <strong> UserID: </strong> " + obj.UserId + "</div><div><strong> Count: </strong> " + obj.Content.length + "<strong> APR: </strong> " + quote.APR + "%" + "<strong> Interest Rate: </strong> " + quote.InterestRate + "% at " + quote.QuoteTypeType + " points " + "<strong> Product Term Type: </strong> " + quote.ProductTermType + "</div></div>";
+                    var newItem = "<div class='result alert alert-info'><p>Cache:<b>" + (obj.IsCached ? 'YES' : 'NO') + "</b> Version:<b>" + (obj.PricingEngineVersionType == 1 ? 'v1' : 'v2') + "</b></p><p>Times:<ul><li>Total:<b>" + obj.TimeInMillisecondsFromSubmit + "</b>ms</li><li>Send/Receive:<b>" + obj.TimeInMillisecondsToProcess + "</b>ms</li><li>Api Process:<b>" + obj.TimeInMillisecondsToProcessServer + "</b>ms</li></ul></p><p>UserID:<b>" + obj.UserId + "</b> Quote Count:<b>" + obj.Content.length + "</b></p><p>First Quote:<ul><li>APR:<b>" + quote.APR + "%</b></li><li>Rate:<b>" + quote.InterestRate + "%</b> at <b>" + quote.QuoteTypeType + "</b> points</li></ul></p></div>";
+                    //inHTML = inHTML + newItem;
+                    //console.log(newItem);
+                    $("div#dynamicTable").append(newItem); //add generated tr html to corresponding table
+                }
+            }
+        });
+    };
+
+    function checkForQuotes2() {
+        var url = '/MortgageRequest/GetResults2';
+        //console.debug("GetResults2 -url:" + url);
+        $.get(url).done(function (data) {
+            if (data != null && data.charAt(0) == '{') {
+                var obj = $.parseJSON(data);
+                //console.log(obj);
+                var submission = obj.Submissions[0];
+                //console.log(submission);
+                if (submission != null) {
+                    //var newItem = "<div class='alert alert-info'>Cache:<b>" + (submission.CachedId != null ? 'YES' : 'NO') + "</b> Version:<b>" + (submission.PricingEngineVersionType == 1 ? 'v1' : 'v2') + "</b><ul><li><b>Times -Total:</b> " + obj.TimeInMillisecondsFromSubmit + "ms <b>-Send/Receive:</b> " + obj.TimeInMillisecondsToProcess + "ms <b>-Api Process:</b> " + obj.ExecutionTimeInMillisec + "ms</li> <li><strong>UserID:</strong> " + submission.QuotingUser.UserId + " <b>Quote Count:</b> " + submission.Quotes.length + "</li><h5>First Quote</h5><li><b>APR:</b> " + submission.Quotes[0].APR + "%" + " <b>Interest Rate:</b> " + submission.Quotes[0].InterestRate + "% at " + submission.Quotes[0].QuoteTypeType + " points -<strong>Term:</strong> " + submission.Quotes[0].ProductTermType + "</li></ul></div>";
+                    var newItem = "<div class='result alert alert-info'><p>Cache:<b>" + (submission.CachedId != null ? 'YES' : 'NO') + "</b> Version:<b>" + (submission.PricingEngineVersionType == 1 ? 'v1' : 'v2') + "</b></p><p>Times:<ul><li>Total:<b>" + obj.TimeInMillisecondsFromSubmit + "</b>ms</li><li>Send/Receive:<b>" + obj.TimeInMillisecondsToProcess + "</b>ms</li><li>Api Process:<b>" + obj.ExecutionTimeInMillisec + "</b>ms</li></ul></p><p>UserID:<b>" + submission.QuotingUser.UserId + "</b> Quote Count:<b>" + submission.Quotes.length + "</b></p><p>First Quote:<ul><li>APR:<b>" + submission.Quotes[0].APR + "%</b></li><li>Rate:<b>" + submission.Quotes[0].InterestRate + "%</b> at <b>" + submission.Quotes[0].QuoteTypeType + "</b> points</li></ul></p></div>";
+                    $("#dynamicTable2").append(newItem); //add generated tr html to corresponding table
+                }
+            }
+        });
+    };
+
+    function checkForQuotes3() {
+        var url = '/MortgageRequest/GetResults3';
+        //console.debug("GetResults3 -url:" + url);
+        $.get(url).done(function (obj) {
+            //console.log(obj);
+            if (obj != null && obj.Content != null) {
+                var quote = obj.Content[0];
+                //console.log(quote);
+                if (quote != null) {
+                    var newItem = "<div class='result alert alert-info'><p>Cache:<b>" + (obj.IsCached ? 'YES' : 'NO') + "</b> Version:<b>" + (obj.PricingEngineVersionType == 1 ? 'v1' : 'v2') + "</b></p><p>Times:<ul><li>Total:<b>" + obj.TimeInMillisecondsFromSubmit + "</b>ms</li><li>Send/Receive:<b>" + obj.TimeInMillisecondsToProcess + "</b>ms</li><li>Api Process:<b>" + obj.TimeInMillisecondsToProcessServer + "</b>ms</li></ul></p><p>UserID:<b>" + obj.UserId + "</b> Quote Count:<b>" + obj.Content.length + "</b></p><p>First Quote:<ul><li>APR:<b>" + quote.APR + "%</b></li><li>Rate:<b>" + quote.InterestRate + "%</b> at <b>" + quote.QuoteTypeType + "</b> points</li></ul></p></div>";
+                    //objects.push(quote);
+                    //objects.sort(function (a, b) { return b.APR - a.APR });
+                    $("div#dynamicTable3").append(newItem); //add generated tr html to corresponding table
+                }
+            }
+        });
+    };
+
+    function reload() {
+        window.location.reload();
+        //displayData = [];
+        $("form").html('');
+        $("div#dynamicTable").html('');
+        $("div#dynamicTable2").html('');
+        $("div#dynamicTable3").html('');
+    }
+
+
+    function submitForm(form, i) {
+        var url = form.attr("action") + i;
+        console.debug('submitForm to:' + url);
+        var formData = $(form).serializeArray();
+        $.post(url, formData).done(function (data) {
+            switch (i) {
+                case '': setTimeout(function () { clearInterval(intervalID1); }, 15000);
+                case '2': setTimeout(function () { clearInterval(intervalID2); }, 15000);
+                case '3': setTimeout(function () { clearInterval(intervalID3); }, 15000);
+            }
+            setTimeout(function () { clearInterval(intervalCountsID); }, 15000);
+        });
+    }
+
+
+    function getCounts() {
+        var url = "/MortgageRequest/GetCounts";
+        //console.debug('GetCounts to:' + url);
+        $.get(url).done(function (data) {
+            //console.log(data);
+            var obj = $.parseJSON(data);
+            console.log(obj);
+            if (obj != null) {
+                if (obj.Finished && intervalCountsID != 0) {
+                    clearInterval(intervalCountsID);
+                    intervalCountsID = 0;
+                    var newItem = "<div class=''>Total Time:<b>" + obj.TotalTime + "</b> Avg. Per Request:<b>" + obj.AvgTotalTimePerRequest + "</b> Avg. Per Result:<b>" + obj.AvgTotalTimePerRequestWithQuotes + "</b><br />Requests -Sent:<b>" + obj.RequestsSentCount + "</b> -Completed:<b>" + obj.RequestsCompletedCount + "</b> -Canceled:<b>" + obj.RequestsCanceledCount + "</b> -Error:<b>" + obj.RequestsErrorCount + "</b></div>";
+                    $("div#dynamicTable").prepend(newItem); //add generated tr html to corresponding table
+                }
+            }
+        });
+    }
+
+    function getCounts2() {
+        var url = "/MortgageRequest/GetCounts2";
+        //console.debug('GetCounts to:' + url);
+        $.get(url).done(function (data) {
+            //console.log(data);
+            var obj = $.parseJSON(data);
+            console.log(obj);
+            if (obj != null) {
+                if (obj.Finished && intervalCountsID2 != 0) {
+                    clearInterval(intervalCountsID2);
+                    intervalCountsID2 = 0;
+                    var newItem = "<div class=''>Total Time:<b>" + obj.TotalTime + "</b> Avg. Per Request:<b>" + obj.AvgTotalTimePerRequest + "</b> Avg. Per Result:<b>Unknown without deserializing string</b><br />Requests -Sent:<b>" + obj.RequestsSentCount + "</b> -Completed:<b>" + obj.RequestsCompletedCount + "</b> -Canceled:<b>" + obj.RequestsCanceledCount + "</b> -Error:<b>" + obj.RequestsErrorCount + "</b></div>";
+                    $("div#dynamicTable2").prepend(newItem); //add generated tr html to corresponding table
+                }
+            }
+        });
+    }
+
+    function getCounts3() {
+        var url = "/MortgageRequest/GetCounts3";
+        //console.debug('GetCounts to:' + url);
+        $.get(url).done(function (data) {
+            //console.log(data);
+            var obj = $.parseJSON(data);
+            //console.log(obj);
+            if (obj != null) {
+                if (obj.Finished && intervalCountsID3 != 0) {
+                    clearInterval(intervalCountsID3);
+                    intervalCountsID3 = 0;
+                    var newItem = "<div class=''>Total Time:<b>" + obj.TotalTime + "</b> Avg. Per Request:<b>" + obj.AvgTotalTimePerRequest + "</b> Avg. Per Result:<b>" + obj.AvgTotalTimePerRequestWithQuotes + "</b><br />Requests -Sent:<b>" + obj.RequestsSentCount + "</b> -Completed:<b>" + obj.RequestsCompletedCount + "</b> -Canceled:<b>" + obj.RequestsCanceledCount + "</b> -Error:<b>" + obj.RequestsErrorCount + "</b></div>";
+                    $("div#dynamicTable3").prepend(newItem); //add generated tr html to corresponding table
+                }
+            }
+        });
+    }
+
+
+    function getQuotes() {
+        //alert('getQuotes');
+        clearInterval(intervalID1);
+        adjustInputForNoCache();
+        submitForm($("#QuoteForm"), '');
+        intervalID1 = setInterval(function () { checkForQuotes(); }, 50);
+        intervalCountsID = setInterval(function () { getCounts(); }, 1000);
+        setTimeout(function () { clearInterval(intervalID1); }, 15000);
+        setTimeout(function () { clearInterval(intervalCountsID); }, 15000);
+    }
+
+    function getQuotes2() {
+        //alert('getQuotes');
+        clearInterval(intervalID2);
+        adjustInputForNoCache();
+        submitForm($("#QuoteForm"), '2');
+        intervalID2 = setInterval(function () { checkForQuotes2(); }, 50);
+        intervalCountsID2 = setInterval(function () { getCounts2(); }, 1000);
+        setTimeout(function () { clearInterval(intervalID2); }, 15000);
+        setTimeout(function () { clearInterval(intervalCountsID2); }, 15000);
+    }
+
+    function getQuotes3() {
+        //alert('getQuotes');
+        clearInterval(intervalID3);
+        adjustInputForNoCache();
+        submitForm($("#QuoteForm"), '3');
+        intervalID3 = setInterval(function () { checkForQuotes3(); }, 50);
+        intervalCountsID3 = setInterval(function () { getCounts3(); }, 1000);
+        setTimeout(function () { clearInterval(intervalID3); }, 15000);
+        setTimeout(function () { clearInterval(intervalCountsID3); }, 15000);
+    }
+
+    function adjustInputForNoCache() {
+        var ele = $('#Amount').next();
+        var val = Number(ele.val());
+        $('form #Amount').next().val(++val);
+    }
+
+</script>
+<br />

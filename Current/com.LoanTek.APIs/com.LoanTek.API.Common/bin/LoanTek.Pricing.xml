@@ -1,0 +1,1560 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LoanTek.Pricing</name>
+    </assembly>
+    <members>
+        <member name="T:LoanTek.Pricing.Bankrate">
+            <summary>
+            Code neceessary to generate rates for saved Bankrate scenarios, build an XML file of the rates, and send the file via FTP to Bankrate.
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.Bankrate.LoadLookups">
+            <summary>
+            Loads the Bankrate Lookup data, the products and quotes the client has set up, and sets the required coordinates for the product families.
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.Bankrate.UpdateInstitutionProcessingStatus(System.Int32,System.Boolean)">
+            <summary>
+            Updates the BankrateRatePlus_Institution record InProcess flag to true of false.
+            </summary>
+            <param name="institutionId">Bankrate Institution ID</param>
+            <param name="inProcess">Boolean indicating whether the institution is being processed</param>
+        </member>
+        <member name="M:LoanTek.Pricing.Bankrate.SetStateToUseForPricing">
+            <summary>
+            Parses the institution name to see if the state is listed. If the state is not listed
+            the state from the client record is returned.
+            </summary>
+            <returns>State Abbreviation</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Bankrate.GetQuoteTypeToReturn(System.String)">
+            <summary>
+            Gets the rate point buckets.
+            </summary>
+            <param name="productName">Loan Program</param>
+            <returns>Quote Type (No Fee, 0 Pt, 1 Pt, 2 Pt)</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Bankrate.ConvertLoanPurpose(System.String)">
+            <summary>
+            Converts the long form loan purpose into the short form loan purpose that the rate tables understand.
+            </summary>
+            <param name="loanPurpose">Long Form Loan Purpose (comes from Lead Manager)</param>
+            <returns>Short Form Loan Purpose</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Bankrate.ConvertPropertyUse(System.String)">
+            <summary>
+            Converts the long form property user into the short form property use that the rate tables understand.
+            </summary>
+            <param name="propertyUse">Long Form Property Use (comes from Lead Manager)</param>
+            <returns>Short Form Property Use</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Bankrate.ConvertPropertyType(System.String)">
+            <summary>
+            Converts the long form property type into the short form property type that the rate tables understand.
+            </summary>
+            <param name="propertyType">Long Form Property Type (comes from Lead Manager)</param>
+            <returns>Short Form Property Type</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Bankrate.GetInstitution">
+            <summary>
+            Gets the Institution record
+            </summary>
+            <returns>BankrateRatePlus_Instutution record</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Bankrate.BuildRateFile(System.Collections.Generic.List{RatePlus.ratedataInstitution})">
+            <summary>
+            Serializes the Bankrate Institution List into an XML file.
+            </summary>
+            <param name="bankrateInstitutionList">Generic List of ratedataInstitution objects</param>
+            <returns>XML file containing all the rates for a given institution</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Bankrate.GenerateRateFile">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Bankrate.CheckForStaleUpdates(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Bankrate.ResetStaleUpdates(System.String)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:LoanTek.Pricing.Bankrate.LogType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:LoanTek.Pricing.Bankrate.LogType.Start">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:LoanTek.Pricing.Bankrate.LogType.Stop">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LoanTek.Pricing.Bankrate.UpdateStatusType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:LoanTek.Pricing.Bankrate.UpdateStatusType.Success">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:LoanTek.Pricing.Bankrate.UpdateStatusType.Error">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:LoanTek.Pricing.Bankrate.UpdateStatusType.ServiceRestarted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.Bankrate.Log(LoanTek.Pricing.Bankrate.LogType,System.DateTime,System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="logType"></param>
+            <param name="timeToLog"></param>
+            <param name="institutionId"></param>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:LoanTek.Pricing.Bankrate.Log(LoanTek.Pricing.Bankrate.LogType,System.DateTime,System.Int32,System.String,LoanTek.Pricing.Bankrate.UpdateStatusType)">
+            <summary>
+            
+            </summary>
+            <param name="logType"></param>
+            <param name="timeToLog"></param>
+            <param name="institutionId"></param>
+            <param name="fileName"></param>
+            <param name="updateStatus"></param>
+        </member>
+        <member name="M:LoanTek.Pricing.BankrateRatePlus.Institutions.#ctor">
+            <summary>
+            Gets all of the institutions
+            </summary>
+        </member>
+        <member name="T:LoanTek.Pricing.BusinessObjects.Adjuster">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.Adjuster.CompareTo(LoanTek.Pricing.BusinessObjects.Adjuster)">
+            <summary>
+            
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanTek.Pricing.BusinessObjects.AdjusterCell">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.AdjusterCell.CompareTo(LoanTek.Pricing.BusinessObjects.AdjusterCell)">
+            <summary>
+            
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanTek.Pricing.BusinessObjects.AdjusterFilter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.AdjusterFilter.CompareTo(LoanTek.Pricing.BusinessObjects.AdjusterFilter)">
+            <summary>
+            
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanTek.Pricing.BusinessObjects.PricingClientVersionType">
+            <summary>
+            Pricing Versions
+            </summary>
+        </member>
+        <member name="F:LoanTek.Pricing.BusinessObjects.PricingClientVersionType.NotSet">
+            <summary>
+            Not Set
+            </summary>
+        </member>
+        <member name="F:LoanTek.Pricing.BusinessObjects.PricingClientVersionType.V1">
+            <summary>
+            Version 1 - Uses Quotes
+            </summary>
+        </member>
+        <member name="F:LoanTek.Pricing.BusinessObjects.PricingClientVersionType.V2">
+            <summary>
+            Version 2 - Does NOT use Quotes
+            </summary>
+        </member>
+        <member name="T:LoanTek.Pricing.BusinessObjects.PricingClientVersion">
+            <summary>
+            Contains the methods necessary to get and save Pricing Versions for a given client
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.PricingClientVersion.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.PricingClientVersion.#ctor(System.Int32,com.LoanTek.Types.QuotingChannelType)">
+            <summary>
+            Gets the Pricing Version for specified Quoting Channel
+            </summary>
+            <param name="clientId">The ID of the Client</param>
+            <param name="quotingChannel">The <see cref="T:QuotingChannelType"/></param>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.PricingClientVersion.Save(LoanTek.Pricing.BusinessObjects.PricingClientVersionType)">
+            <summary>
+            Updates the pricing version for a quoting channel for a given client
+            </summary>
+            <param name="versionType">The <see cref="T:PricingClientVersionType"/></param>
+        </member>
+        <member name="T:LoanTek.Pricing.BusinessObjects.PricingClientVersions">
+            <summary>
+            Contains the methods/members necessary to get the Pricing Versions for a given Client
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.BusinessObjects.PricingClientVersions.ClientId">
+            <summary>
+            The ID of the Client
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.PricingClientVersions.#ctor(System.Int32)">
+            <summary>
+            Constructor that gets all of the Quoting Channel Pricing Versions for a given Client
+            </summary>
+            <param name="clientId"></param>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.PricingClientVersions.Get(com.LoanTek.Types.QuotingChannelType)">
+            <summary>
+            
+            </summary>
+            <param name="quotingChannel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanTek.Pricing.BusinessObjects.RateCell">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.RateCell.CompareTo(LoanTek.Pricing.BusinessObjects.RateCell)">
+            <summary>
+            
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanTek.Pricing.BusinessObjects.ScenarioTest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.BusinessObjects.ScenarioTest.UserId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.BusinessObjects.ScenarioTest.V1Rates">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.BusinessObjects.ScenarioTest.V2Rates">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.BusinessObjects.ScenarioTest.V1ProcessingTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.BusinessObjects.ScenarioTest.V2ProcessingTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.BusinessObjects.ScenarioTest.LoanRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.BusinessObjects.ScenarioTest.ScenarioName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.ScenarioTest.#ctor(System.Int32,LoanTek.Pricing.LoanRequests.LoanPricerLoanRequest)">
+            <summary>
+            
+            </summary>
+            <param name="userId"></param>
+            <param name="request"></param>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.ScenarioTest.PriceRequest(LoanTek.Pricing.PricingEngine,System.Collections.Generic.List{LoanTek.Pricing.BusinessObjects.PricingClientVersionType},com.LoanTek.Types.BestExecutionMethodType)">
+            <summary>
+            
+            </summary>
+            <param name="engine"></param>
+            <param name="versionsToRun"></param>
+            <param name="bestExecutionMethod"></param>
+        </member>
+        <member name="T:LoanTek.Pricing.BusinessObjects.ScenarioTester">
+            <summary>
+            Provides all of the necessary code to take a list of loan requests and return pricing for the pricing versions selected
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.BusinessObjects.ScenarioTester.User">
+            <summary>
+            The <see cref="T:com.LoanTek.Master.AUser"/> 
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.BusinessObjects.ScenarioTester.ScenarioTests">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.BusinessObjects.ScenarioTester.BestExecutionMethodType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.ScenarioTester.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            Constructor that will set up scenarios for a given user
+            </summary>
+            <param name="userId">The ID of the user to get pricing for</param>
+            <param name="includeLoanTekScenarios"></param>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.ScenarioTester.#ctor(System.Int32,System.Boolean,System.Boolean,System.Int32,com.LoanTek.Types.BestExecutionMethodType,com.LoanTek.Types.QuotingChannelType)">
+            <summary>
+            Constructor that will set up scenarios for a given user
+            </summary>
+            <param name="userId">The ID of the user to get pricing for</param>
+            <param name="includeLoanTekScenarios"></param>
+            <param name="includeUserScenarios"></param>
+            <param name="lenderId"></param>
+            <param name="bestExecutionMethod"></param>
+            <param name="quotingChannel"></param>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.ScenarioTester.#ctor(System.Int32,System.Boolean,System.Boolean,System.Int32,com.LoanTek.Types.BestExecutionMethodType)">
+            <summary>
+            Constructor that will set up scenarios for a given user
+            </summary>
+            <param name="userId">The ID of the user to get pricing for</param>
+            <param name="includeLoanTekScenarios"></param>
+            <param name="includeUserScenarios"></param>
+            <param name="lenderId"></param>
+            <param name="bestExecutionMethod"></param>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.ScenarioTester.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor that will set up a specific scenario for a given user
+            </summary>
+            <param name="userId"></param>
+            <param name="scenarioId"></param>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.ScenarioTester.Run(System.Collections.Generic.List{LoanTek.Pricing.BusinessObjects.PricingClientVersionType})">
+            <summary>
+            Gets pricing for all of the scenarios
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.QuoteTypePreference.Save(System.Collections.Generic.List{com.LoanTek.Master.Data.LinqDataContexts.QuoteType},com.LoanTek.Types.QuotingChannelType,System.Int32,System.Int32)">
+            <summary>
+            Saves the Quote Type Preference
+            </summary>
+            <param name="quoteTypesToReturn">List of <see cref="T:com.LoanTek.Master.Data.LinqDataContexts.QuoteType"/></param>
+            <param name="quotingChannelId">The <see cref="T:com.LoanTek.Types.QuotingChannelType" /></param>
+            <param name="activeUser">ID of the User saving the preference</param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.BusinessObjects.QuoteTypePreference.Delete(System.Int32)">
+            <summary>
+            Deletes the preference
+            </summary>
+            <param name="quoteTypePreferenceId">ID of the <see cref="T:LoanTek.Pricing.BusinessObjects.QuoteTypePreference"/></param>
+        </member>
+        <member name="T:LoanTek.Pricing.Custom.AmericanInterbancMortgage.PricingHelper">
+            <summary>
+            Provides methods necessary to adjust pricing properties for American Interbanc Mortgage
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.Custom.AmericanInterbancMortgage.PricingHelper.AdjustLockPeriod(System.Int32)">
+            <summary>
+            Modifies lock period per Mel Kahraman
+            </summary>
+            <param name="lockPeriodToAdjust"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Custom.LenderFi.LenderFiPricingEngine.GetLenderFiQuotes(LoanTek.Pricing.LoanRequests.LenderFiLoanRequest)">
+            <summary>
+            Executes the GetLenderFiQuotes stored procedure and then loads the results into a list of Quote objects
+            </summary>
+            <param name="request">LenderFiLoanRequest object</param>
+            <returns>List of Quote objects</returns>
+        </member>
+        <member name="T:LoanTek.Pricing.Custom.LenderFi.LenderFiDetailsWeb">
+            <summary>
+            Object that matches the rates definition provided by LenderFi
+            </summary>
+        </member>
+        <member name="T:LoanTek.Pricing.Custom.LenderFi.LenderFiDetails">
+            <summary>
+            Object that matches the rates definition provided by LenderFi
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.Custom.LoanDepot.LoanDepotPricingEngine.ExecuteGetLoanDepotBankrateQuotes(LoanTek.Pricing.LoanRequests.LoanDepotLoanRequest)">
+            <summary>
+            Executes the GetLLoanDepotBankrateQuotes stored procedure and then loads the results into a list of Quote objects
+            </summary>
+            <param name="request">LoanDepotLoanRequest object</param>
+            <returns>List of Quote objects</returns>
+        </member>
+        <member name="F:LoanTek.Pricing.Engines.Actions.FinalizeFoundRates.FoundRateBlocks">
+            <summary>
+            Each element is a 'block' or list of Rates for a single Tier. 
+            Every rate in this block belongs to the same tier and therefore has the same adjustments and caps. 
+            </summary>
+        </member>
+        <member name="F:LoanTek.Pricing.Engines.Actions.FindMatchingAdjustmentsForRates.FoundRateBlocks">
+            <summary>
+            Each element is a 'block' or list of Rates for a single Tier. 
+            Every rate in this block belongs to the same tier and therefore has the same adjustments and caps. 
+            </summary>
+        </member>
+        <member name="F:LoanTek.Pricing.Engines.Actions.FindMatchingClientFeesForRates.FoundRateBlocks">
+            <summary>
+            Each element is a 'block' or list of Rates for a single Tier. 
+            Every rate in this block belongs to the same tier and therefore has the same ClientFees. 
+            </summary>
+        </member>
+        <member name="F:LoanTek.Pricing.Engines.Actions.FindMatchingCapsForRates.FoundRateBlocks">
+            <summary>
+            Each element is a 'block' or list of Rates for a single Tier. 
+            Every rate in this block belongs to the same tier and therefore has the same Caps and caps. 
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.Engines.APricingEngine`2.ProcessRequest(`0)">
+            <summary>
+            Returns all the pricing for a given Request
+            </summary>
+            <param name="request">Any Request object that implements the IRequest interface</param>
+            <returns>Return a <see cref="T:LoanTek.Pricing.Engines.RequestResponseObjects.IResponse"/> IResponse object</returns>
+        </member>
+        <member name="T:LoanTek.Pricing.Engines.Deposit.ARequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LoanTek.Pricing.Engines.Deposit.AResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.Engines.PricingEngineUser.GetCompoundInterestTypeList(System.Boolean)">
+            <summary>
+            Get the single ClientCompoundInterestType for a tier. There should be ONLY one ClientCompoundInterestType per tier at most.
+            </summary>
+            <param name="reInit"></param>
+            <returns>Dictionary&lt;long, ClientCompoundInterestType&gt; the key being the long tier Id</returns>
+        </member>
+        <member name="T:LoanTek.Pricing.LoanRequests.MortgageLoanRequest">
+            <summary>
+            Contains the members and methods necessary to price a mortgage request with a full set of requirements
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.CashOut">
+            <summary>
+            Only valid if LoanPurpose = LoanPurposeType.Refinance
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.CashOutAmount">
+            <summary>
+            Only valid if CashOut = true
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.ProductFamily">
+            <summary>
+            Passing in an empty list will return all Product Families (i.e. wildcard search)
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.ProductClass">
+            <summary>
+            Passing in an empty list will return all Product Classes (i.e. wildcard search)
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.ProductType">
+            <summary>
+            Passing in an empty list will return all Product Types (i.e. wildcard search)
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.ProductTerm">
+            <summary>
+            Passing in an empty list will return all Product Terms (i.e. wildcard search)
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.HasSecondMortgage">
+            <summary>
+            Only valid if LoanPurpose includes LoanPurposeType.Refinance
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.SecondMortgageAmount">
+            <summary>
+            Only valid if ProductFamily includes LoanPurposeType.Refinance
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.VAFirstTime">
+            <summary>
+            Only valid if ProductFamily includes ProductFamilyType.VA
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.VADisabled">
+            <summary>
+            Only valid if ProductFamily includes ProductFamilyType.VA
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.VAType">
+            <summary>
+            Only valid if ProductFamily includes ProductFamilyType.VA
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.QuoteTypesToReturn">
+            <summary>
+            The QuoteTypes (Points) to return. If not specified ALL QuoteTypes will be returned.
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.CountyName">
+            <summary>
+            Only used for pricing if ZipCode is blank and StateAbbreviation is not.  
+            </summary>
+            <remarks>
+            If ZipCode is blank then a combination of County and the State can be used. 
+            </remarks>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.StateAbbreviation">
+            <summary>
+            Only used for pricing if ZipCode is blank and County is not.  
+            </summary>
+            <remarks>
+            If ZipCode is blank then a combination of the State and the County can be used. 
+            </remarks>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.BestExecutionMethod">
+            <summary>
+            Method of execution for returning Quotes. Default is 'ByPointGroup'.
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.IsValid">
+            <summary>
+            If this is false, the Pricing Engine will probably not return any results. 
+            TODO: Need to verify if anything else needs to be validated
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+            <remarks>Needed for JSON and assigning values while parsing.</remarks>
+        </member>
+        <member name="M:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.#ctor(System.Int32)">
+            <summary>
+            Constructor that takes a scenario ID and loads the <see cref="T:LoanTek.Pricing.LoanRequests.MortgageLoanRequest"/> object with details of a saved Scenario
+            </summary>
+            <param name="scenarioId">The ID of the Scenario to load</param>
+        </member>
+        <member name="M:LoanTek.Pricing.LoanRequests.MortgageLoanRequest.#ctor(com.LoanTek.Types.QuotingChannelType,System.Int32,System.Int32,com.LoanTek.Types.LoanPurposeType,System.Decimal,com.LoanTek.Types.PropertyTypeType,com.LoanTek.Types.PropertyUseType,System.String,System.Collections.Generic.List{com.LoanTek.Types.ProductFamilyType},System.Collections.Generic.List{com.LoanTek.Types.ProductClassType},System.Collections.Generic.List{com.LoanTek.Types.ProductTypeType},System.Collections.Generic.List{com.LoanTek.Types.ProductTermType})">
+            <summary>
+            Constructor that takes the minimum requirements for a mortgage loan.
+            </summary>
+            <param name="quotingChannel">The <see cref="T:com.LoanTek.Types.QuotingChannelType"/> the rates are being generated for.</param>
+            <param name="creditScore">The borrower's FICO score</param>
+            <param name="loanAmount">The amount the borrower wants to borrow</param>
+            <param name="loanPurpose">The <see cref="T:com.LoanTek.Types.LoanPurposeType"/></param>
+            <param name="loanToValue">The ratio of the Loan to the property Value</param>
+            <param name="propertyType">The <see cref="T:com.LoanTek.Types.PropertyTypeType"/></param>
+            <param name="propertyUsage">The <see cref="T:com.LoanTek.Types.PropertyUseType"/></param>
+            <param name="zipCode">The Zip Code where the property is located</param>
+            <param name="productFamilyTypes">List of <see cref="T:com.LoanTek.Types.ProductFamilyType"/>; Passing in an empty list will return all Product Families (i.e. wildcard search)</param>
+            <param name="productClassTypes">List of <see cref="T:com.LoanTek.Types.ProductClassType"/>; Passing in an empty list will return all Product Classes (i.e. wildcard search)</param>
+            <param name="productTypeTypes">List of <see cref="T:com.LoanTek.Types.ProductTypeType"/>; Passing in an empty list will return all Product Types (i.e. wildcard search)</param>
+            <param name="productTermTypes">List of <see cref="T:com.LoanTek.Types.ProductTermType"/>; Passing in an empty list will return all Product Terms (i.e. wildcard search)</param>
+        </member>
+        <member name="P:LoanTek.Pricing.LoanRequests.LoanPricerLoanRequest.CashOutAmount">
+            <summary>
+            Only valid if CashOut = true
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.LoanRequests.LoanPricerLoanRequest.LoadDefaultData(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="userId"></param>
+        </member>
+        <member name="M:LoanTek.Pricing.LoanRequests.LoanPricerLoanRequest.GetDummyDataFromSavedScenario(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="spread"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.LoanRequests.LoanPricerLoanRequest.IsValidLoanAmountForProgram(com.LoanTek.Master.Data.LinqDataContexts.GetLenderLoanProgramsByUserIdResult)">
+            <summary>
+            Compares the loan amount to various loan program properties to determine if the program is valid for this request.
+            </summary>
+            <param name="program">The loan program to consider</param>
+            <returns>True if the loan program is valid</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.LoanRequests.MinimumLoanRequest.#ctor(com.LoanTek.Types.QuotingChannelType,System.Int32,System.Int32,com.LoanTek.Types.LoanPurposeType,System.Collections.Generic.List{com.LoanTek.Types.LoanProgramType},System.Decimal,com.LoanTek.Types.PropertyTypeType,com.LoanTek.Types.PropertyUseType,System.String)">
+            <summary>
+            Creates an instance of a MinimumLoanRequest
+            </summary>
+            <param name="quotingChannel">Quoting Channel the request is coming from. Value of <see cref="T:com.LoanTek.Master.Data.LinqDataContexts.QuotingChannel"/></param>
+            <param name="creditScore">Borrower's credit score</param>
+            <param name="loanAmount">Amount the borrower wants to borrow</param>
+            <param name="loanPurpose">Value of <see cref="T:com.LoanTek.Types.LoanPurposeType"/></param>
+            <param name="loanProgramsOfInterest">List of Loan Programs the borrower is interested in. Value of <see cref="T:com.LoanTek.Types.LoanProgramType"/></param>
+            <param name="loanToValue">Ratio of the loan amount to the value of the home</param>
+            <param name="propertyType">Property Type of the property the borrower wants to finance. Value of <see cref="T:com.LoanTek.Types.PropertyTypeType"/></param>
+            <param name="propertyUsage">Property Use of the property the borrower wants to finance. Value of <see cref="T:com.LoanTek.Types.PropertyUseType"/></param>
+            <param name="zipCode">Zip Code where the property exists</param>
+        </member>
+        <member name="T:LoanTek.Pricing.V2.AMortgageRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.V2.AMortgageRequest.#ctor(com.LoanTek.Types.QuotingChannelType,System.Int32,System.Int32,com.LoanTek.Types.LoanPurposeType,System.Collections.Generic.List{com.LoanTek.Types.ProductFamilyType},System.Collections.Generic.List{com.LoanTek.Types.ProductClassType},System.Collections.Generic.List{com.LoanTek.Types.ProductTypeType},System.Collections.Generic.List{com.LoanTek.Types.ProductTermType},System.Decimal,com.LoanTek.Types.PropertyTypeType,com.LoanTek.Types.PropertyUseType,System.String,System.Collections.Generic.List{com.LoanTek.Types.QuoteTypeType})">
+            <summary>
+            
+            </summary>
+            <param name="quotingChannel"></param>
+            <param name="creditScore"></param>
+            <param name="loanAmount"></param>
+            <param name="loanPurpose"></param>
+            <param name="productTermTypes"></param>
+            <param name="loanToValue"></param>
+            <param name="propertyType"></param>
+            <param name="propertyUsage"></param>
+            <param name="zipCode"></param>
+            <param name="quoteTypesToReturn"></param>
+            <param name="productFamilyTypes"></param>
+            <param name="productClassTypes"></param>
+            <param name="productTypeTypes"></param>
+        </member>
+        <member name="T:LoanTek.Pricing.FeeSet">
+            <summary>
+            Summary description for FeeSet
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.Name">
+            <summary>
+            User assigned name for the Fee Set
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.Created">
+            <summary>
+            Date the Fee Set was created
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.Updated">
+            <summary>
+            Date the Fee Set was last updated
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.Status">
+            <summary>
+            Depricated. Most likely will be null
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.FeeSetId">
+            <summary>
+            Unique ID of the Fee Set
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.LoanAmount">
+            <summary>
+            Loan Amount from the request. Used to convert percentage fees to a dollar amount
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.ItemizedFees">
+            <summary>
+            String representation of all of the fees. This is a "<br />" delimited string.
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.OriginationFee">
+            <summary>
+            The dollar amount of HUD 801 fee
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.OriginationPoints">
+            <summary>
+            The HUD 801 fee converted to points
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.FeesIncludedInAPR">
+            <summary>
+            All the <see cref="T:LoanTek.Pricing.QuoteFee"/> objects that are included in the APR calculation
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.APRFees">
+            <summary>
+            Sum of all the fees included in the APR calculation
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.Fees">
+            <summary>
+            All the <see cref="T:LoanTek.Pricing.QuoteFee"/> objects that are included in the Fee Set
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.NonAPRFees">
+            <summary>
+            Sum of all the fees that are not included in the APR calculation
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.DollarFees">
+            <summary>
+            Sum of all the dollar fees that are included in the APR calculation
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.PercentFees">
+            <summary>
+            Sum of all the percent fees that are included in the APR calculation
+            </summary>
+        </member>
+        <member name="P:LoanTek.Pricing.FeeSet.TotalFees">
+            <summary>
+            Sum of all the fees that are included in the Fee Set
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.FeeSet.#ctor(System.Int32)">
+            <summary>
+            Constructor that gets all the fees in the Fee Set
+            </summary>
+            <param name="feeSetId">The ID of the Fee Set</param>
+        </member>
+        <member name="M:LoanTek.Pricing.FeeSet.#ctor(System.Int32,System.Decimal)">
+            <summary>
+            Constructor that gets all the fees in the Fee Set
+            </summary>
+            <param name="feeSetId">The ID of the Fee Set</param>
+            <param name="loanAmount">The Loan Amount for the request</param>
+        </member>
+        <member name="M:LoanTek.Pricing.FeeSet.#ctor(System.Collections.Generic.List{com.LoanTek.Master.Data.LinqDataContexts.GetFeeSetsByUserIdResult},System.Int32,System.Decimal)">
+            <summary>
+            Constructor that gets all the fees in the Fee Set
+            </summary>
+            <param name="feeList">A list of Fee Sets that the system should use to get the Fee Set</param>
+            <param name="feeSetId">The ID of the Fee Set</param>
+            <param name="loanAmount">The Loan Amount for the request</param>
+        </member>
+        <member name="M:LoanTek.Pricing.FeeSet.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:LoanTek.Pricing.MonthlyInsurancePremiumInfo">
+            <summary>
+            Summary description for MonthlyInsurancePremiumInfo
+            </summary>
+        </member>
+        <member name="T:LoanTek.Pricing.PreQualifiedUsers">
+            <summary>
+            Gets a list of userIds for users that pre-qualify for a given request
+            </summary>
+        </member>
+        <member name="T:LoanTek.Pricing.PricingEngine">
+            <summary>
+            Methods necessary to price a loan.
+            </summary>
+            
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.LoadDefaults">
+            <summary>
+            Pre-loads as much information as possible before starting to process the request
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.CheckForClientAdmin">
+            <summary>
+            Checks to see if there is a Master Client Admin because that could influence how pricing rules are displayed.
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.LoadPricingBaseData">
+            <summary>
+            Queries the system to get the users pricing information. When possible cached data is used to prevent unncessary trips to the database.
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.ConvertLoanPurpose(System.String)">
+            <summary>
+            Converts the long form loan purpose into the short form loan purpose that the rate tables understand.
+            </summary>
+            <param name="loanPurpose">Long Form Loan Purpose (comes from Lead Manager)</param>
+            <returns>Short Form Loan Purpose</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.ConvertPropertyUse(System.String)">
+            <summary>
+            Converts the long form property user into the short form property use that the rate tables understand.
+            </summary>
+            <param name="propertyUse">Long Form Property Use (comes from Lead Manager)</param>
+            <returns>Short Form Property Use</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.ConvertLoanPrograms(System.Collections.Generic.List{com.LoanTek.Types.LoanProgramType})">
+            <summary>
+            Converts the list of Loan Programs into a comma delimited string so it can be passed into the stored procedure.
+            </summary>
+            <param name="loanPrograms">List of LoanProgram enums</param>
+            <returns>Comma delimited string of Loan Programs</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.ConvertPropertyType(System.String)">
+            <summary>
+            Converts the long form property type into the short form property type that the rate tables understand.
+            </summary>
+            <param name="propertyType">Long Form Property Type (comes from Lead Manager)</param>
+            <returns>Short Form Property Type</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.ExecuteGetMatchedQuotes(LoanTek.Pricing.LoanRequests.ZillowContactLoanRequest)">
+            <summary>
+            Executes the GetMatchedQuotes stored procedure and then loads the results into a list of Quote objects
+            </summary>
+            <param name="request">MinimumLoanRequest object</param>
+            <returns>List of Quote objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.ExecuteGetMatchedQuotes(LoanTek.Pricing.LoanRequests.MinimumLoanRequest)">
+            <summary>
+            Executes the GetMatchedQuotes stored procedure and then loads the results into a list of Quote objects
+            </summary>
+            <param name="request">MinimumLoanRequest object</param>
+            <returns>List of Quote objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.ExecuteGetMatchedQuotes(LoanTek.Pricing.LoanRequests.LoanPricerLoanRequest)">
+            <summary>
+            Executes the GetMatchedQuotes stored procedure and then loads the results into a list of Quote objects
+            </summary>
+            <param name="request">LoanPricerLoanRequest object</param>
+            <returns>List of Quote objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.ExecuteGetMatchedQuotes(LoanTek.Pricing.LoanRequests.MortgageLoanRequest)">
+            <summary>
+            Executes the GetMatchedQuotes stored procedure and then loads the results into a list of Quote objects
+            </summary>
+            <param name="request">The <see cref="T:LoanTek.Pricing.LoanRequests.MortgageLoanRequest"/> object</param>
+            <returns>List of Quote objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.ExecuteGetMatchedQuotesByLendingTreeRequestV3(LoanTek.Pricing.LoanRequests.LendingTreeLoanRequest)">
+            <summary>
+            Executes the GetMatchedQuotesByLendingTreeRequestV3 stored procedure and then loads the results into a list of Quote objects
+            </summary>
+            <param name="request">LendingTreeLoanRequest object</param>
+            <returns>List of Quote objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.GetQuotes(LoanTek.Pricing.iLoanRequest)">
+            <summary>
+            Returns a list of Quote Objects that meet the given loan request requirements
+            </summary>
+            <param name="request">Loan Request Object</param>
+            <returns>List of Quote objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.ValidateRequest(LoanTek.Pricing.iLoanRequest)">
+            <summary>
+            Validates that the minimum requires of a request have been met.
+            </summary>
+            <param name="request">Any Loan Request that implements iLoanRequest</param>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.PriceRequest(LoanTek.Pricing.LoanRequests.LoanPricerLoanRequest)">
+            <summary>
+            Returns a list of Rate objects which contain pricing information for the list of Quote objects
+            </summary>
+            <param name="request">Loan Request</param>
+            <returns>List of Rate Objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.VerifyQuoteTypes(System.Collections.Generic.List{LoanTek.Pricing.Rate},com.LoanTek.Types.QuotingChannelType)">
+            <summary>
+            Checks to see if a user has specified the types of quotes (1 pt, no fee, etc.) for a given quoting channel
+            If the user has specified then we return only the types specified. Otherwise we return them all.
+            </summary>
+            <param name="ratesToCheck">List of <see cref="T:LoanTek.Pricing.Rate"/> objects to check</param>
+            <param name="quotingChannel"><see cref="T:com.LoanTek.Types.QuotingChannelType"/> to check</param>
+            <returns>List of <see cref="T:LoanTek.Pricing.Rate"/> objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.DoBestExecution(System.Collections.Generic.List{LoanTek.Pricing.Rate},com.LoanTek.Types.BestExecutionMethodType)">
+            <summary>
+            Groups the rates based on the BestExecutionMethod and then chooses the top rate for each group based on APR.
+            </summary>
+            <param name="rates">List of Rate objects</param>
+            <param name="bestExecutionMethod">Method to use for Best Execution</param>
+            <returns>List of "Best" Rate objects</returns>
+            <remarks>
+            BStrong - 04/05/2016 - Added code that would force the rates to group LPMI and STD CONVENTIONAL programs together so that only one of them would be returned from the pricing engine.
+            </remarks>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.DoBestExecution(System.Collections.Generic.List{LoanTek.Pricing.RateQuote},com.LoanTek.Types.BestExecutionMethodType)">
+            <summary>
+            Groups the rates based on the BestExecutionMethod and then chooses the top rate for each group based on APR.
+            </summary>
+            <param name="rates">List of RateQuote objects</param>
+            <param name="bestExecutionMethod">Method to use for Best Execution</param>
+            <returns>List of "Best" RateQuote objects</returns>
+            <remarks>
+            BStrong - 04/05/2016 - Added code that would force the rates to group LPMI and STD CONVENTIONAL programs together so that only one of them would be returned from the pricing engine.
+            </remarks>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.GetAPR(System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Decimal,LoanTek.Pricing.MonthlyInsurancePremiumInfo,System.Boolean)">
+            <summary>
+            Calculates Annual Percentage Rate
+            </summary>
+            <param name="interestRate">Interest Rate</param>
+            <param name="LTV">Loan To Value</param>
+            <param name="loanAmount">Loan Amount</param>
+            <param name="termOfLoan">Length of the loan in months</param>
+            <param name="additionalFees">Lender Fees</param>
+            <param name="miInfo">Monthly Insurnace Premium information</param>
+            <param name="FHA">Indicates whether the loan is FHA or not</param>
+            <returns>Annual Percentage Rate</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.GetAmortizationSchedule(System.Decimal,System.Decimal,System.Decimal,System.Int32,System.Decimal,System.Decimal,System.Boolean)">
+            <summary>
+            Produces the amortization schedule for a given loan
+            </summary>
+            <param name="interestRate">Interest Rate</param>
+            <param name="LTV">Loan To Value</param>
+            <param name="loanAmount">Loan Amount</param>
+            <param name="termOfLoan">Length of the loan in months</param>
+            <param name="additionalFees">Lender Fees</param>
+            <param name="mortgageInsurance">Montly Insurance Premium</param>
+            <param name="FHA">Indicates whether the loan is FHA or not</param>
+            <returns>AmortizationSchedule object</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.GetRates(System.Int32,System.Int32,System.Int32,System.String,System.Decimal,System.Decimal,System.Decimal,System.String,System.String,System.String,System.String,System.String,System.String,com.LoanTek.Types.QuotingChannelType,System.Decimal,System.Decimal,System.Boolean,System.Decimal,System.Boolean,System.Decimal,System.Boolean,System.Boolean,System.Boolean,System.String,System.Int32,System.String,System.Int32,System.String,System.Boolean,System.Decimal,System.Boolean,System.Boolean)">
+            <summary>
+            Returns a list of Rate objects which contain pricing information for the given loan parameters
+            </summary>
+            <param name="userId">User ID the pricing info is attached to</param>
+            <param name="rsMasterLoanProgramId">ID for the Master Loan Program</param>
+            <param name="termInMonths">Length of the loan in months</param>
+            <param name="loanProduct">Program Code for the Loan Program</param>
+            <param name="fico">Borrowers Credit Score</param>
+            <param name="loanToValue">Loan To Value</param>
+            <param name="loanAmount">Loan Amount</param>
+            <param name="propertyType">Property Type</param>
+            <param name="propertyUsage">Property Type</param>
+            <param name="loanPurpose">Loan Purpose (Purchase or Refinance)</param>
+            <param name="state">State Abbreviation</param>
+            <param name="zipCode">Property Zip Code</param>
+            <param name="county">Property County</param>
+            <param name="quoteChannel">Quoting Channel</param>
+            <param name="fees">Lender Fees</param>
+            <param name="nonAprFees">Lender Fees not included when calculating APR</param>
+            <param name="overrideFees">Indicates whether or not to override the Fees</param>
+            <param name="newFees">Fees to use when overriding fees</param>
+            <param name="overrideComp">Indicates whether or not to override the lender comp</param>
+            <param name="newComp">Comp to use when overriding comp</param>
+            <param name="fhaLoan">Indicates whether or not this is an FHA loan</param>
+            <param name="vaLoan">Indicates whether or not this is an VA loan</param>
+            <param name="cashOut">Indicates whether or not the borrower is taking cash out</param>
+            <param name="quoteTypesToReturn">No Fee, 0 Point, 1 Point, 2 Point</param>
+            <param name="compUserId">User ID for the user that is using the system.</param>
+            <param name="channelProductName">Loan Program name to display back to the quoting channel</param>
+            <param name="feeSetId">ID of the fee set linked to the quote</param>
+            <param name="itemizedFees">String representation of all of the fees in the fee set</param>
+            <param name="sheetActive">Indicates whether or not to include disabled sheets</param>
+            <param name="govFees">Fees associated with FHA and VA loans</param>
+            <param name="harpLoan">Indicates whether or not this is a HARP loan</param>
+            <param name="lenderPaidInsurance">Indicates whether or not the lender is paying the MIP</param>
+            <returns>List of Rate objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.GetFeeSet(System.Int32,System.Decimal)">
+            <summary>
+             Gets a specific fee set from all of the user's fee sets.
+            </summary>
+            <param name="feeSetId">ID of the fee set</param>
+            <param name="loanAmount">Loan Amount</param>
+            <returns>FeeSet object</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.GetVAFee(System.String,System.Boolean,System.Decimal,System.Decimal,System.Boolean,System.Boolean,System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Calculates the upfront fees for a VA loan
+            </summary>
+            <param name="loanPurpose">Purchase or Refinance</param>
+            <param name="cashOut">Indicates whether Cashout</param>
+            <param name="loanToValue">Loan To Value</param>
+            <param name="loanAmount">Loan Amount</param>
+            <param name="disabled">Indicates whether or not this is a disabled veteran</param>
+            <param name="firstTime">Indicates whether or not the borrower has used VA benefits before</param>
+            <param name="vaType">Type of veteran (Military, Reserves, National Guard)</param>
+            <param name="loanOwnedByFannie">Indicates whether or not an existing VA loan is owned by Fannie Mae</param>
+            <param name="loanOwnedByFha">Indicates whether or not an existing VA loan is owned by FHA</param>
+            <param name="loanOwnedByFreddie">Indicates whether or not an existing VA loan is owned by Freddie Mac</param>
+            <returns>Upfront VA fees</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.GetFHAFee(System.Decimal)">
+            <summary>
+            Calculates the upfront fees for an FHA loan
+            </summary>
+            <param name="loanAmount">Loan Amount</param>
+            <returns>Upfront FHA fees</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.GetMontlyPrincipleAndInterestPayment(System.Decimal,System.Decimal,System.Decimal)">
+            <summary>
+            Calculates the monthly Principle and Interest payment
+            </summary>
+            <param name="interestRate">Interest Rate</param>
+            <param name="currentBalance">Mortgage Balance</param>
+            <param name="loanTermInMonths">Length of loan in months</param>
+            <returns>Monthly Principle and Interest payment</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.GetHomeOwnerInsurance(System.Decimal)">
+            <summary>
+            Calculates the cost of Home Owner Insurance
+            </summary>
+            <param name="propertyValue">Value of the property</param>
+            <returns>Monthly Home Owner Insurance payment</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.GetPropertyTaxes(System.Decimal,System.String)">
+            <summary>
+            Calculates the monthly property taxes
+            </summary>
+            <param name="propertyValue">Value of the property</param>
+            <param name="stateAbbreviation">State Abbreviation</param>
+            <returns>Monthly Property Taxes</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.PriceLoanRequest(LoanTek.Pricing.iLoanRequest)">
+            <summary>
+            Returns all of the pricing for the given loan request. **Note: Best Execution is not completed, so all rates are returned.
+            </summary>
+            <param name="request">Any LoanRequest object that implements iLoanRequest</param>
+            <returns>List of Rate objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.PriceLoanRequest(LoanTek.Pricing.iLoanRequest,com.LoanTek.Types.BestExecutionMethodType)">
+            <summary>
+            Returns the Best Execution pricing for the given loan request.
+            </summary>
+            <param name="request">Any LoanRequest object that implements iLoanRequest</param>
+            <param name="bestExecution">Method to use for Best Execution</param>
+            <returns>List of Rate objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.PriceLoanRequest(LoanTek.Pricing.iLoanRequest,com.LoanTek.Types.BestExecutionMethodType,System.Boolean)">
+            <summary>
+            Returns the Best Execution pricing for the given loan request.
+            </summary>
+            <param name="request">Any LoanRequest object that implements iLoanRequest</param>
+            <param name="bestExecution">Method to use for Best Execution</param>
+            <param name="validateQuoteTypes">True or False to determine whether we validate the user's quote types or not</param>
+            <returns>List of Rate objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.PriceLoanRequest(LoanTek.Pricing.LoanRequests.LoanPricerLoanRequest,com.LoanTek.Types.BestExecutionMethodType,System.Boolean,System.Double@)">
+            <summary>
+            Returns all of the pricing for the given loan request.
+            </summary>
+            <param name="request">A <see cref="T:LoanTek.Pricing.LoanRequests.LoanPricerLoanRequest"/> object</param>
+            <param name="bestExecution">Method to use for Best Execution</param>
+            <param name="validateQuoteTypes">True or False to determine whether we validate the user's quote types or not </param>
+            <param name="timeToProcess">Time in seconds it took to get the list of <see cref="T:LoanTek.Pricing.Rate"/> objects</param>
+            <returns>List of Rate objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.PriceQuotes(System.Collections.Generic.List{LoanTek.Pricing.IQuote},LoanTek.Pricing.iLoanRequest)">
+            <summary>
+            Returns a list of Rate objects which contain pricing information for the list of Quote objects
+            </summary>
+            <param name="quotes">List of Quote objects</param>
+            <param name="loanRequest">The <see cref="T:LoanTek.Pricing.iLoanRequest"/></param>
+            <returns>List of Rate Objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingEngine.PriceLoanRequest(com.LoanTek.Rates.DataObjects.Interfaces.IRequest)">
+            <summary>
+            Returns all the pricing for a given Request
+            </summary>
+            <param name="request">Any Request object that implements the IRequest interface</param>
+            <returns>Return a <see cref="T:com.LoanTek.Rates.Responses"/> object</returns>
+        </member>
+        <member name="T:LoanTek.Pricing.PricingInfo">
+            <summary>
+            Summary description for PricingInfo
+            </summary>
+        </member>
+        <member name="T:LoanTek.Pricing.PricingRule">
+            <summary>
+            Contains the necessary to manage a Pricing Rule
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingRule.AddBranch(System.Int32)">
+            <summary>
+            Adds a Branch to an existing Pricing Rule
+            </summary>
+            <param name="branchId">The ID of the Branch that is being added</param>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingRule.AddBranch(System.Int32,System.Int32)">
+            <summary>
+            Adds a Branch to an existing Pricing Rule
+            </summary>
+            <param name="ruleId">The ID of the Pricing Rule the Branch is being added to</param>
+            <param name="branchId">The ID of the Branch that is being added</param>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingUtilities.GetLoanPurpose(System.String)">
+            <summary>
+            Converts a string representing a loan program to a LoanPurposeType 
+            </summary>
+            <param name="s">string representing a Loan Purpose , example Purchase or Refinance</param>
+            <returns>enum LoanPurposeType, use ToString() to get text string for this type</returns>
+            <seealso cref="T:com.LoanTek.Types.LoanPurposeType"/>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingUtilities.GetLoanProgram(System.String)">
+            <summary>
+            Converts a string representing a loan program to a LoanProgramType 
+            </summary>
+            <param name="s">string representing a loan program, example '30 year' or '5yr ARM'</param>
+            <returns>enum LoanProgramType, use EnumLib.GetDescription() to get text description for this type</returns>
+            <seealso cref="T:com.LoanTek.Types.LoanProgramType"/>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingUtilities.GetPropertyUse(System.String)">
+            <summary>
+            Converts a string representing a property use to a PropertyUseType 
+            </summary>
+            <param name="s">string representing a property use, example 'Primary Residence'</param>
+            <returns>enum PropertyUseType, use EnumLib.GetDescription() to get text description for this type</returns>
+            <seealso cref="T:com.LoanTek.Types.PropertyUseType"/>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingUtilities.GetCreditProfile(System.Int32)">
+            <summary>
+            Converts a credit score into a credit profile value
+            </summary>
+            <param name="creditScore">int credit score number</param>
+            <returns>enum CreditProfileType, use EnumLib.GetDescription() to get text description for this type</returns>
+            <seealso cref="T:com.LoanTek.Types.CreditProfileType"/>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingUtilities.GetCreditProfile(System.String)">
+            <summary>
+            Converts a credit score into a credit profile value
+            </summary>
+            <param name="creditProfile"></param>
+            <returns>enum CreditProfileType, use EnumLib.GetDescription() to get text description for this type</returns>
+            <seealso cref="T:com.LoanTek.Types.CreditProfileType"/>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingUtilities.GetCreditScore(System.String)">
+            <summary>
+            Converts a credit profile into a credit score value
+            </summary>
+            <param name="creditProfile">string representing a credit profile</param>
+            <returns>int credit score number</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingUtilities.GetCreditScore(System.Int32)">
+            <summary>
+            Converts a credit score into a new credit score that correlates to the values saved in the quote filters
+            </summary>
+            <param name="creditScore">The credit score to convert</param>
+            <returns>The converted credit score</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingUtilities.GetVaFundingFeePercent(System.String,System.Boolean,System.Decimal,System.Decimal,System.Boolean,System.Boolean,System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Calculates the upfront fees for a VA loan
+            </summary>
+            <param name="loanPurpose">Purchase or Refinance</param>
+            <param name="cashOut">Indicates whether Cashout</param>
+            <param name="loanToValue">Loan To Value</param>
+            <param name="loanAmount">Loan Amount</param>
+            <param name="disabled">Indicates whether or not this is a disabled veteran</param>
+            <param name="firstTime">Indicates whether or not the borrower has used VA benefits before</param>
+            <param name="vaType">Type of veteran (Military, Reserves, National Guard)</param>
+            <param name="loanOwnedByFannie">Indicates whether or not an existing VA loan is owned by Fannie Mae</param>
+            <param name="loanOwnedByFha">Indicates whether or not an existing VA loan is owned by FHA</param>
+            <param name="loanOwnedByFreddie">Indicates whether or not an existing VA loan is owned by Freddie Mac</param>
+            <returns>Upfront VA fees</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingUtilities.GetMonthlyInsurancePremiumInfo(System.Decimal,System.Decimal,System.Int32,System.String,System.String,System.String,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Calulates monthly insurance premium information
+            </summary>
+            <param name="loanAmount">Loan Amount</param>
+            <param name="loanToValue">Loan To Value</param>
+            <param name="loanTermInMonths">Length of loan in months</param>
+            <param name="loanPurpose">Purchase or Refinance</param>
+            <param name="propertyUsage">Property Use</param>
+            <param name="stateAbbreviation">State Abbreviation</param>
+            <param name="creditScore">Borrowers credit score</param>
+            <param name="fhaLoan">Indicates whether or not this is an FHA loan</param>
+            <param name="vaLoan">Indicates whether or not this is an VA loan</param>
+            <param name="cashOut">Indicates whether or not the borrower is taking cash out</param>
+            <param name="harpLoan">Indicates whether or not this is a HARP loan</param>
+            <param name="lenderPaidInsurance">Indicates whether or not the lender is paying the MIP</param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.PricingUtilities.ConvertLoanProgramsOfInterest(System.Collections.Generic.List{com.LoanTek.Types.LoanProgramType},System.Boolean,System.Decimal,System.Boolean,System.Boolean)">
+            <summary>
+            Converts a list of <see cref="T:com.LoanTek.Types.LoanProgramType"/> to a <see cref="T:LoanTek.Pricing.BusinessObjects.LoanProgramSearchFilters"/> object, which contain a list of ProductFamilyTypes, ProductClassTypes, ProductTypeTypes, and ProductTermTypes.
+            </summary>
+            <param name="loanProgramsOfInterest">The list of <see cref="T:com.LoanTek.Types.LoanProgramType"/> to convert</param>
+            <param name="vaEligible">True if the borrower is eligible for VA loans</param>
+            <param name="ltv">Loan To Value</param>
+            <param name="loanOwnedByFannie">True if the loan is ownded by Fannie Mae</param>
+            <param name="loanOwnedByFreddie">True if the loan is owned by Freddie Mac</param>
+            <returns>The <see cref="T:LoanTek.Pricing.BusinessObjects.LoanProgramSearchFilters"/>The <see cref="T:LoanTek.Pricing.BusinessObjects.LoanProgramSearchFilters"/></returns>
+        </member>
+        <member name="T:LoanTek.Pricing.QuoteFee">
+            <summary>
+            Represents fees for a given lender
+            </summary>
+        </member>
+        <member name="T:LoanTek.Pricing.Rate">
+            <summary>
+            Represents pricing data for a given loan program
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.Rate.CompareTo(LoanTek.Pricing.Rate)">
+            <summary>
+            
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanTek.Pricing.WebServiceX.MonthlyIndex">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.IndexDate">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.OneYearConstantMaturityTreasury">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.ThreeYearConstantMaturityTreasury">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.FiveYearConstantMaturityTreasury">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.ThreeMonthTreasuryBill">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.SixMonthTreasuryBill">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.ThreeMonthSecondaryMarketCD">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.SixMonthSecondaryMarketCD">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.EleventhDistrictCOFI">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.CostOfSavingsIndex">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.OneMonthLIBOR">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.ThreeMonthLIBOR">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.SixMonthLIBOR">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.OneYearLIBOR">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.CostOfDepositsIndex">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.MonthlyIndex.TwelveMonthTreasuryAverage">
+            <remarks/>
+        </member>
+        <member name="T:LoanTek.Pricing.WebServiceX.WeeklyIndex">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.WeeklyIndex.IndexDate">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.WeeklyIndex.OneYearConstantMaturityTreasury">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.WeeklyIndex.ThreeYearConstantMaturityTreasury">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.WeeklyIndex.FiveYearConstantMaturityTreasury">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.WeeklyIndex.ThreeMonthTreasuryBill">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.WeeklyIndex.SixMonthTreasuryBill">
+            <remarks/>
+        </member>
+        <member name="P:LoanTek.Pricing.WebServiceX.WeeklyIndex.ThreeMonthSecondaryMarketCD">
+            <remarks/>
+        </member>
+        <member name="T:LoanTek.Pricing.Zillow.zillowLoanQuoteSubmissionResult">
+            <summary>
+            The top-level JSON response from an attempt to submit quotes. 
+            </summary>
+            <remarks>
+                I used Zillow's naming conventions so there were no errors/surprises when serializing the JSON data.
+                I seriously can't believe Zillow didn't use some conventional formatting for class/struct names and property names!!
+            </remarks>
+        </member>
+        <member name="T:LoanTek.Pricing.Zillow.ZillowMortgageBasic">
+            <summary>
+            Contains all of the fields/methods necessary to process a Zillow Loan Request Notification using old Basic Quoting technology (manual quoters).
+            </summary>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgageBasic.ConvertQuoteToZillowQuote(System.String,com.LoanTek.Master.Data.LinqDataContexts.GetQuoteList_ManualResult,LoanTek.Pricing.LoanRequests.MortgageLoanRequest)">
+            <summary>
+            Converts a <see cref="T:LoanTek.Pricing.Rate"/> object into a <see cref="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteRequest"/> object
+            </summary>
+            <returns>The <see cref="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteRequest"/></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgageBasic.ConvertFeeSetToZillowFees(System.Collections.Generic.List{LoanTek.Pricing.QuoteFee})">
+            <summary>
+            Converts a <see cref="T:LoanTek.Pricing.FeeSet"/> object to an array of <see cref="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteFeeDetails"/>  objects
+            </summary>
+            <param name="fees">The List of  <see cref="T:LoanTek.Pricing.QuoteFee"/></param>
+            <returns>The array of <see cref="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteFeeDetails"/> </returns>
+        </member>
+        <member name="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteARMDetails">
+            <summary>
+            Loan quote details specific to creating an ARM loan quote.
+            </summary>
+            <remarks>
+                I used Zillow's naming conventions so there were no errors/surprises when serializing the JSON data.
+                I seriously can't believe Zillow didn't use some conventional formatting for class/struct names and property names!!
+            </remarks>
+        </member>
+        <member name="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteFeeDetails">
+             <summary>
+             Fee details for a loan quote being created.
+             If the fee's HUD line is less than 1100, it must correspond exactly to one of the following: 
+            801 - "Loan origination fee", "Lender origination fee" 
+            802 - "% of loan amount (points)", "Loan discount fee", "Lender discount points" 
+            803 - "Appraisal fee" 
+            804 - "Credit report fee" 
+            809 - "Recording fees and other taxes", "Tax related service fee", "Tax service fee" 
+            811 - "Transaction fee", "Processing fee" 
+            812 - "Underwriting fee" 
+            813 - "Transfer fee", "Wire transfer fee" 
+             </summary>
+             <remarks>
+                 I used Zillow's naming conventions so there were no errors/surprises when serializing the JSON data.
+                 I seriously can't believe Zillow didn't use some conventional formatting for class/struct names and property names!!
+             </remarks>
+        </member>
+        <member name="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteFHADetails">
+            <summary>
+            Loan quote details specific to creating an FHA loan quote. 
+            </summary>
+            <remarks>
+                I used Zillow's naming conventions so there were no errors/surprises when serializing the JSON data.
+                I seriously can't believe Zillow didn't use some conventional formatting for class/struct names and property names!!
+            </remarks>
+        </member>
+        <member name="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteRequest">
+            <summary>
+            Information about a single loan quote that should be created. 
+            </summary>
+            <remarks>
+                I used Zillow's naming conventions so there were no errors/surprises when serializing the JSON data.
+                I seriously can't believe Zillow didn't use some conventional formatting for class/struct names and property names!!
+            </remarks>
+        </member>
+        <member name="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteResult">
+            <summary>
+            The top-level response from an attempt to submit quotes. 
+            </summary>
+            <remarks>
+                I used Zillow's naming conventions so there were no errors/surprises when serializing the JSON data.
+                I seriously can't believe Zillow didn't use some conventional formatting for class/struct names and property names!!
+            </remarks>
+        </member>
+        <member name="T:LoanTek.Pricing.Zillow.zillowLoanQuoteSubmission">
+            <summary>
+                Contains all of the fields/methods necessary to send Quotes back to Zillow.
+            </summary>
+            <remarks>
+                I used Zillow's naming conventions so there were no errors/surprises when serializing the JSON data.
+                I seriously can't believe Zillow didn't use some conventional formatting for class/struct names and property names!!
+            </remarks>
+        </member>
+        <member name="F:LoanTek.Pricing.Zillow.zillowLoanQuoteSubmission.RequestId">
+            <summary>
+            Used by the Cache to Id the original request
+            </summary>
+            <remarks>
+            Added by Eric @ 6/1/2016
+            </remarks>
+        </member>
+        <member name="T:LoanTek.Pricing.Zillow.ZillowMortgage">
+            <summary>
+                Contains all of the fields/methods necessary to process a Zillow Loan Request Notification.
+            </summary>
+            <remarks>
+                -- BStrong - 11/2015 --
+                I used Zillow's naming conventions so there were no errors/surprises when serializing the JSON data.
+                I seriously can't believe Zillow didn't use some conventional formatting for class/struct names and property names!!
+            </remarks>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.#ctor(System.String,System.Int32)">
+            <summary>
+            Creates an instance of a <see cref="T:LoanTek.Pricing.Zillow.ZillowMortgage"/>
+            </summary>
+            <param name="zillowRequest">The Zillow ID of the loan request. Example: "ZR-EXAMPLE" </param>
+            <param name="userId">The ID of the User.</param>
+            <remarks>Sending "0" for the userId will return all users that submitted Quotes for a given Request</remarks>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.ProcessRequest(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Saves a Zillow Request to the DB, creates quotes for each user that is qualified to quote, and then returns those quotes to Zillow
+            </summary>
+            <param name="zillowRequest">The full JSON string received from Zillow</param>
+            <param name="userId">The ID of the User. When the User ID is "0", the system will return pricing for ALL users that are qualified</param>
+            <param name="debugMode">Whether to run in Debug Mode or not. When in Debug, it doesn't matter what the user's Zillow settings are, and we will not send Quotes to Zillow</param>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.SaveZillowLoanRequestNotification(System.String)">
+            <summary>
+                Saves a new Zillow Loan Request Notification
+            </summary>
+            <param name="zillowRequest">The full JSON string received from Zillow</param>
+            <returns>The Zillow ID of the loan request. Example: "ZR-EXAMPLE" </returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.PriceLoanRequestManual(System.String,LoanTek.Pricing.LoanRequests.MortgageLoanRequest,System.Int32)">
+            <summary>
+             Prices a Zillow Request for users on the old manual system
+            </summary>
+            <param name="requestId">The Zillow ID of the loan request. Example: "ZR-EXAMPLE" </param>
+            <param name="mortgageLoanRequest">The <see cref="T:LoanTek.Pricing.LoanRequests.MortgageLoanRequest"/></param>
+            <param name="useOnlyThisUserId"></param>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.PriceLoanRequest(System.String,LoanTek.Pricing.LoanRequests.MortgageLoanRequest)">
+            <summary>
+            Prices a Zillow Request
+            </summary>
+            <param name="requestId">The Zillow ID of the loan request. Example: "ZR-EXAMPLE" </param>
+            <param name="mortgageLoanRequest">The <see cref="T:LoanTek.Pricing.LoanRequests.MortgageLoanRequest"/></param>
+            <returns>All of the Rates (pricing) that were returned by the Pricing Engine</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.SaveSubmission(System.Int32,System.String,System.Int64,LoanTek.Pricing.Zillow.zillowLoanQuoteSubmission,LoanTek.Pricing.Zillow.zillowLoanQuoteSubmissionResult,System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Saves the final results from Zillow to the DB
+            </summary>
+            <param name="userId">The ID for the user submitting the quotes</param>
+            <param name="requestId">The Zillow ID of the loan request. Example: "ZR-EXAMPLE"</param>
+            <param name="processTime">The number of seconds it took to price and send the quotes to Zillow</param>
+            <param name="quotesToSend">The <see cref="T:LoanTek.Pricing.Zillow.zillowLoanQuoteSubmission"/></param>
+            <param name="results">The <see cref="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteResult"/></param>
+            <param name="pricingTime">The number of seconds it took to price and send the quotes to Zillow</param>
+            <param name="sendTime">The number of seconds it took to price and send the quotes to Zillow</param>
+            <param name="pricingEngineInitTime">The number of seconds it took to price and send the quotes to Zillow</param>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.SendQuotesToZillow(LoanTek.Pricing.Zillow.zillowLoanQuoteSubmission)">
+            <summary>
+            Sends the final quotes to Zillow via a JSON POST, and returns the results from Zillow
+            </summary>
+            <param name="quotesToSend">The <see cref="T:LoanTek.Pricing.Zillow.zillowLoanQuoteSubmission"/></param>
+            <returns>The <see cref="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteResult"/></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.GetZillowLoanRequestNotification(System.String)">
+            <summary>
+                Gets a saved Zillow Loan Request Notification
+            </summary>
+            <param name="requestId">The Zillow ID of the loan request. Example: "ZR-EXAMPLE" </param>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.GetZillowSubmissions(System.String,System.Int32)">
+            <summary>
+            Gets the LoanTek record of the <see cref="T:LoanTek.Pricing.Zillow.zillowLoanQuoteSubmission"/>
+            </summary>
+            <param name="requestId">The Zillow ID of the loan request. Example: "ZR-EXAMPLE"</param>
+            <param name="userId">ID of the User that submitted the <see cref="T:LoanTek.Pricing.Zillow.zillowLoanQuoteSubmission"/></param>
+            <returns>The List of <see cref="T:com.LoanTek.Master.Data.LinqDataContexts.Zillow_Submission"/> objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.GetZillowRequest(System.String)">
+            <summary>
+            Gets the LoanTek record of the <see cref="T:LoanTek.Pricing.Zillow.zillowLoanRequestNotification"></see>
+            </summary>
+            <param name="requestId">The Zillow ID of the loan request. Example: "ZR-EXAMPLE"</param>
+            <returns>The List of <see cref="T:com.LoanTek.Master.Data.LinqDataContexts.Zillow_Request"/> objects</returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.GenerateZillowQuotes(System.String,System.Collections.Generic.List{LoanTek.Pricing.Rate})">
+            <summary>
+            Converts a list of <see cref="T:LoanTek.Pricing.Rate"/> objects into a Zillow <see cref="T:LoanTek.Pricing.Zillow.zillowLoanQuoteSubmission"/> object
+            </summary>
+            <param name="requestId">The Zillow ID of the loan request. Example: "ZR-EXAMPLE"</param>
+            <param name="rates">List of <see cref="T:LoanTek.Pricing.Rate"/></param>
+            <returns>The <see cref="T:LoanTek.Pricing.Zillow.zillowLoanQuoteSubmission"/></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.ConvertRateToZillowQuote(System.String,LoanTek.Pricing.Rate)">
+            <summary>
+            Converts a <see cref="T:LoanTek.Pricing.Rate"/> object into a <see cref="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteRequest"/> object
+            </summary>
+            <param name="requestId">The Zillow ID of the loan request. Example: "ZR-EXAMPLE" </param>
+            <param name="rate">The <see cref="T:LoanTek.Pricing.Rate"/></param>
+            <returns>The <see cref="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteRequest"/></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.ConvertCalcPriceToLoanDiscountFee(System.Decimal)">
+            <summary>
+            Converts the rate's price retured from the Pricing Engine into an 802 <see cref="T:LoanTek.Pricing.QuoteFee"/> object
+            </summary>
+            <param name="calcPrice">The rate's price retured from the Pricing Engine</param>
+            <returns>The <see cref="T:LoanTek.Pricing.QuoteFee"/></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.ConvertFeeToLoanDiscountFee(System.Decimal)">
+            <summary>
+            Converts a fee amount into an 802 <see cref="T:LoanTek.Pricing.QuoteFee"/> object
+            </summary>
+            <param name="fee">The fee that is being returned as an 802</param>
+            <returns>The <see cref="T:LoanTek.Pricing.QuoteFee"/></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.GetFhaDetails(System.Boolean)">
+            <summary>
+            Creates a new <see cref="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteFHADetails"/>, which determines if the FHA loan is a Streamline or not
+            </summary>
+            <param name="isStreamline">Determines if the FHA loan is a Streamline or not</param>
+            <returns>The <see cref="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteFHADetails"/></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.ConvertArmDetailsToZillowArmDetails(LoanTek.Pricing.ARMDetails)">
+            <summary>
+            Converts an <see cref="T:LoanTek.Pricing.ARMDetails"/> object to a Zillow <see cref="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteARMDetails"/> object
+            </summary>
+            <param name="armDetails">The <see cref="T:LoanTek.Pricing.ARMDetails"/></param>
+            <returns>The <see cref="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteARMDetails"/></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.ConvertFeeSetToZillowFees(System.Collections.Generic.List{LoanTek.Pricing.QuoteFee})">
+            <summary>
+            Converts a <see cref="T:LoanTek.Pricing.FeeSet"/> object to an array of <see cref="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteFeeDetails"/>  objects
+            </summary>
+            <param name="feeSet">The <see cref="T:LoanTek.Pricing.FeeSet"/></param>
+            <returns>The array of <see cref="T:LoanTek.Pricing.Zillow.ZillowCreateLoanQuoteFeeDetails"/> </returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.GetMortgageLoanRequest(LoanTek.Pricing.Zillow.zillowLoanRequestNotification)">
+            <summary>
+            Converts a Zillow request to a <see cref="T:LoanTek.Pricing.LoanRequests.MortgageLoanRequest"/> object
+            </summary>
+            <param name="zillowRequest">The <see cref="T:LoanTek.Pricing.Zillow.zillowLoanRequestNotification"/></param>
+            <returns>The <see cref="T:LoanTek.Pricing.LoanRequests.MortgageLoanRequest"/></returns>
+        </member>
+        <member name="M:LoanTek.Pricing.Zillow.ZillowMortgage.PreQualifyRequest(LoanTek.Pricing.LoanRequests.MortgageLoanRequest)">
+            <summary>
+            Gets a list of IDs for users that are most likely to return quotes for a given request
+            </summary>
+            <param name="request">The <see cref="T:LoanTek.Pricing.LoanRequests.MortgageLoanRequest"/></param>
+            <returns>A list of UserIds</returns>
+        </member>
+        <member name="T:LoanTek.Pricing.Zillow.ZillowUser">
+            <summary>
+            Contains all of the fields and methods necessary to manager a Zillow User
+            </summary>
+            <remarks>
+            BStrong - 04/26/2016 - The property names don't follow standard naming conventions because I wanted them to match the fields in the DB.
+            </remarks>
+        </member>
+    </members>
+</doc>

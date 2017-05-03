@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>com.LoanTek.API</name>
+    </assembly>
+    <members>
+        <member name="P:com.LoanTek.API.ErrorApiResponse.HttpStatusCode">
+            <summary>
+            HttpStatusCode - this should be the same as the HttpResponse
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.ErrorApiResponse.Message">
+            <summary>
+            This contains the error message
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.Filters.PostProcessFilter">
+            <summary>
+            All Quote Requests should use this filter to do some common tasks.
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.IRequest">
+            <summary>
+            Interface for ALL client requests.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.IRequest.ClientDefinedId">
+            <summary>
+            Unique Id provided by the client to track and lookup this request. Commonly referred to as the 'RequestId'.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.IRequest.PassThroughItems">
+            <summary>   
+            Generic List of objects that the client can pass-through with the request and be returned unaltered in the response.
+            This can be a single word of information, number(s), a list of strings, or a complex object that the client wants to pass along with the request and be returned in the response. 
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.IResponse">
+            <summary>
+            Interface for ALL client responses.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.IResponse.LoanTekDefinedId">
+            <summary>
+            Unique Id provided by LoanTek to track and lookup this response. Commonly referred to as the 'RequestId'.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.IResponse.ExecutionTimeInMillisec">
+            <summary>
+            Total time in Milliseconds it took to execute this request
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.IResponse.TimeStamp">
+            <summary>
+            This timestamp represents when this response was created. It is the total time in Milliseconds since the UTC 'Epoch' date time (01/01/1970).  
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.IResponse.ApiEndPoint">
+            <summary>
+            The Api 'end-point' that executed this request. An end-point is defined as the namespace, controller, and http request method accessed. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.IResponse.Message">
+            <summary>
+            May hold additional information about the request or a possible error string if an exception was thrown while pricing the loan. 
+            </summary>
+            <remarks>
+            Any error string this may contain is considered a non-fatal exception and the overall request can still have an Http Status Code 200 'OK'. 
+            </remarks>
+        </member>
+        <member name="P:com.LoanTek.API.Requests.IApiRequest.ClientDefinedIdentifier">
+            <summary>   
+            This is a unique Id defined and sent by the Partner for this request.
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.Requests.IRequest">
+            <summary>
+            Interface for ALL client requests.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Requests.IRequest.ClientDefinedIdentifier">
+            <summary>
+            Use ClientDefinedId
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Requests.IRequest.PassThroughItems">
+            <summary>
+            Generic List of objects that the client can pass-through with the request and be returned unaltered in the response.
+            This can be a single word of information, number(s), a list of strings, or a complex object that the client wants to pass along with the request and be returned in the response. 
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.Requests.IResponse">
+            <summary>
+            Interface for ALL client responses.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Requests.IResponse.LoanTekDefinedIdentifier">
+            <summary>
+            Unique Id provided by LoanTek to track and lookup this response. Commonly referred to as the 'ResponseId'.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Requests.IResponse.ExecutionTimeInMillisec">
+            <summary>
+            Total time in Milliseconds it took to execute this request
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Requests.IResponse.TimeStamp">
+            <summary>
+            This timestamp represents when this response was created. It is the total time in Milliseconds since the UTC 'Epoch' date time (01/01/1970).  
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Requests.IResponse.ApiEndPoint">
+            <summary>
+            The Api 'end-point' that executed this request. An end-point is defined as the namespace, controller, and http request method accessed. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Requests.IResponse.CachedId">
+            <summary>
+            If the response came from a cached resource, then this string hold the number of submissions cached out of the number of total submissions being returned. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Requests.IResponse.Message">
+            <summary>
+            May hold additional information about the request or a possible error string if an exception was thrown while pricing the loan. 
+            </summary>
+            <remarks>
+            Any error string this may contain is considered a non-fatal exception and the overall request can still have an Http Status Code 200 'OK'. 
+            </remarks>
+        </member>
+        <member name="T:com.LoanTek.API.Requests.MortgageLoanQuote">
+            <summary>
+            Default Quote object used for Common Mortgage responses.
+            </summary>
+            <remarks>
+            Overwrites the com.LoanTek.Quoting.Common.Quote object, removing or 'hiding' unneeded properties. 
+            </remarks>
+        </member>
+        <member name="T:com.LoanTek.API.Requests.MortgageLoanRequest">
+            <summary>
+            Contains the members and data points necessary to price a mortgage request with a full set of requirements
+            </summary>
+            <remarks>
+            Overwrites the MortgageLoanRequest object, removing or 'hiding' unneeded properties. 
+            </remarks>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>com.LoanTek.API.Common</name>
+    </assembly>
+    <members>
+        <member name="T:com.LoanTek.API.Common.Filters.IPAddressValidationAttribute">
+            <summary>
+            Only allows authorized IP addresses access. 
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.Common.Filters.AuthorizedIPRepository">
+            <summary>
+            Holds the Authorized IP Addresses
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.Common.Models.DynamicContractResolver`2">
+            <summary>
+            Use to limit or remove unwanted Json properties / data
+            </summary>
+        </member>
+    </members>
+</doc>

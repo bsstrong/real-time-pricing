@@ -1,0 +1,481 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>com.LoanTek.API.Pricing.Partners</name>
+    </assembly>
+    <members>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Controllers.BankrateController">
+            <summary>
+            Webservice for Bankrate Quoting.  
+            </summary>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Controllers.BankrateController.GetPreQualList(System.String,com.LoanTek.Quoting.Mortgage.Common.MortgageRequest)">
+            <summary>
+            Used to query this particular web service for a list of Pre-Qualified / Active quoters for this Channel. 
+            </summary>
+            <param name="authToken">Unique security token required for accessing these web services. A partner / client can get their token from the developers portal.</param>
+            <param name="request" cref="M:com.LoanTek.API.Pricing.Partners.Controllers.BankrateController.FullMortgageRequest(System.String,com.LoanTek.API.Pricing.Partners.Models.Mortgage.FullMortgageRequest)">The mortgage request that contains the personal details about the mortgage.</param>
+            <returns cref="T:com.LoanTek.Quoting.Mortgage.PreQualUsers.QuotingUser">List of QuotingUser objects.</returns>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Controllers.BankrateController.GetCache(System.Boolean,System.Int32)">
+            <summary>
+            Get cache instance data and clear the cache.
+            </summary>
+            <param name="clear">Set to True if you want to clear the cache.</param>
+            <param name="region">Set to the UserId if you want to clear only the cache for a single user.</param>
+            <returns></returns>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Controllers.BankrateController.FullMortgageRequestInfo(System.String)">
+            <summary>
+            Used to query information about this particular web service. 
+            </summary>
+            <param name="authToken">Unique security token required for accessing these web services. A partner / client can get their token from the developers portal.</param>
+            <returns cref="T:com.LoanTek.API.Api">Api object containing details about this web service.</returns>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Controllers.BankrateController.FullMortgageRequestTest(System.String)">
+            <summary>
+            Used for testing the FullMortgageRequest endpoint.
+            </summary>
+            <param name="authToken">Unique security token required for accessing these web services. A partner / client can get their token from the developers portal.</param>
+            <returns cref="T:com.LoanTek.API.Pricing.Partners.Models.Mortgage.FullMortgageResponse`2">On success a FullMortgageResponse object with a list of Quotes. Else, a string error message.</returns>
+            <response code="200">FullMortgageResponse object</response>
+            <response code="400">Missing required fields or data</response>
+            <response code="401">Invalid or Unauthorized Authentication Token</response>
+            <response code="403">Access not allowed (Invalid Partner Id)</response>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Controllers.BankrateController.FullMortgageRequest(System.String,com.LoanTek.API.Pricing.Partners.Models.Mortgage.FullMortgageRequest)">
+            <summary>
+            Generate personalized mortgage quotes from active and enabled Bankrate Channel users for a passed in mortgage request. 
+            </summary>
+            <remarks>
+            LoanTek Clients are required to have an active and auto-quoting enabled Bankrate Channel in order to quote this request.
+            </remarks>
+            <param name="authToken">Unique security token required for accessing these web services. A partner / client can get their token from the developers portal.</param>
+            <param name="request" cref="T:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageRequest">The mortgage request that contains the personal details about the mortgage.</param>
+            <returns cref="T:com.LoanTek.API.Pricing.Partners.Models.Mortgage.FullMortgageResponse`2">On success a FullMortgageResponse object with a list of Quotes. Else, a string error message.</returns>
+            <response code="200">FullMortgageResponse object</response>
+            <response code="400">Missing required fields or data</response>
+            <response code="401">Invalid or Unauthorized Authentication Token</response>
+            <response code="403">Access not allowed (Invalid Partner Id)</response>
+        </member>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Controllers.CommonController">
+            <summary>
+            Partner Web service for Quoting Mortgage Loan requests.
+            </summary>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Controllers.CommonController.GetCache(System.Boolean,System.Int32)">
+            <summary>
+            Get cache instance data and clear the cache.
+            </summary>
+            <param name="clear">Set to True if you want to clear the cache.</param>
+            <param name="region">Set to the UserId if you want to clear only the cache for a single user.</param>
+            <returns></returns>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Controllers.CommonController.FullMortgageRequestInfo(System.String,System.String)">
+            <summary>
+            Used to query information about this particular web service. 
+            </summary>
+            <param name="partnerName">The Pricing (QuotingChannel) Partner this is for.</param>
+            <param name="authToken">Unique security token required for accessing these web services. A partner / client can get their token from the developers portal.</param>
+            <returns cref="T:com.LoanTek.API.Api">Api object containing details about this web service.</returns>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Controllers.CommonController.FullMortgageRequestTest(System.String,System.String)">
+            <summary>
+            Used for testing the FullMortgageRequest endpoint.
+            </summary>
+            <param name="partnerName">The name of the Partner this webservice is for.</param>
+            <param name="authToken">Unique security token required for accessing these web services. A partner / client can get their token from the developers portal.</param>
+            <returns cref="T:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse">On success a FullMortgageResponse object with a list of Quotes. Else, a string error message.</returns>
+            <response code="200">FullMortgageResponse object</response>
+            <response code="400">Missing required fields or data</response>
+            <response code="401">Invalid or Unauthorized Authentication Token</response>
+            <response code="403">Access not allowed (Invalid Partner Id)</response>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Controllers.CommonController.FullMortgageRequest(System.String,System.String,com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageRequest)">
+            <summary>
+            Generate personalized mortgage quotes from active and enabled LoanTek Channel users/clients for a passed in mortgage request. 
+            </summary>
+            <remarks>
+            LoanTek Clients are required to have an active and auto-quoting enabled LoanTek Channel in order to quote this request.
+            </remarks>
+            <param name="partnerName">The name of the Partner this webservice is for.</param>
+            <param name="authToken">Unique security token required for accessing these web services. A partner / client can get their token from the developers portal.</param>
+            <param name="request" cref="M:com.LoanTek.API.Pricing.Partners.Controllers.CommonController.FullMortgageRequest(System.String,System.String,com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageRequest)">The mortgage request that contains the personal details about the mortgage.</param>
+            <returns cref="T:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse">On success a FullMortgageResponse object with a list of Quotes. Else, a string error message.</returns>
+            <response code="200">FullMortgageResponse object</response>
+            <response code="400">Missing required fields or data</response>
+            <response code="401">Invalid or Unauthorized Authentication Token</response>
+            <response code="403">Access not allowed (Invalid Partner Id)</response>
+        </member>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Controllers.ZillowController">
+            <summary>
+            Webservice for Zillow Quoting.
+            </summary>
+            <remarks>
+            Please refer to Global.asax for Cache and PreQual instance inits
+            </remarks>
+            
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Controllers.ZillowController.GetPreQualList(System.String,LoanTek.Pricing.Zillow.zillowLoanRequestNotification)">
+            <summary>
+            Used to query this particular web service for a list of Pre-Qualified / Active quoters for this Channel. 
+            </summary>
+            <param name="authToken">Unique security token required for accessing these web services. A partner / client can get their token from the developers portal.</param>
+            <param name="request" cref="T:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageRequest">The mortgage request that contains the personal details about the mortgage.</param>
+            <returns cref="T:com.LoanTek.API.Api">Api object containing details about this web service.</returns>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Controllers.ZillowController.GetCache(System.Boolean,System.Int32)">
+            <summary>
+            Get cache instance data and clear the cache.
+            </summary>
+            <param name="clear">Set to True if you want to clear the cache.</param>
+            <param name="region">Set to the UserId if you want to clear only the cache for a single user.</param>
+            <returns></returns>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Controllers.ZillowController.FullMortgageRequestInfo(System.String)">
+            <summary>
+            Used to query information about this particular web service. 
+            </summary>
+            <param name="authToken">Unique security token required for accessing these web services. A partner / client can get their token from the developers portal.</param>
+            <returns cref="T:com.LoanTek.API.Api">Api object containing details about this web service.</returns>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Controllers.ZillowController.MortgageRequestTest(System.String)">
+            <summary>
+            Used for testing the FullMortgageRequest endpoint.
+            </summary>
+            <param name="authToken">Unique security token required for accessing these web services. A partner / client can get their token from the developers portal.</param>
+            <returns cref="T:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse">On success a FullMortgageResponse object with a list of Quotes. Else, a string error message.</returns>
+            <response code="200">FullMortgageResponse object</response>
+            <response code="400">Missing required fields or data</response>
+            <response code="401">Invalid or Unauthorized Authentication Token</response>
+            <response code="403">Access not allowed (Invalid Partner Id)</response>
+        </member>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Filters.AApiRequest">
+            <summary>
+            Parent <see cref="T:com.LoanTek.API.Requests.IApiRequest"/> IRequest object holding common param(s).  All other IRequest objects extend this. 
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Filters.PostProcessFilter">
+            <summary>
+            All Responses should use this filter to do some common tasks.
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Filters.PreProcessFilter">
+            <summary>
+            All Requests should use this filter to do some common tasks.
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageRequest">
+            <summary>
+            A Full Mortgage Request contains a <see cref="T:com.LoanTek.API.Requests.MortgageLoanRequest"/> MortgageLoanRequest object. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageRequest.ClientDefinedIdentifier">
+            <summary>
+            Unique Id provided by the client to track and lookup this request. Commonly referred to as the 'RequestId'.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageRequest.PassThroughItems">
+            <summary>
+            Generic List of objects that the client can pass-through with the request and be returned unaltered in the response.
+            This can be a single word of information, number(s), a list of strings, or a complex object that the client wants to pass along with the request and be returned in the response. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageRequest.PostbackUrl">
+            <summary>
+            The URL to post Quotes to. If null, then Quotes will be returned in the response. 
+            </summary>
+            <remarks>
+            If PostbackInChuncks is set to true but this is null, then PostbackInChuncks is ignored.
+            </remarks>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageRequest.PostbackInChunks">
+            <summary>
+            True or False if the postback is to be split up into chunks. Each chunk should contain all the quotes for one Client. 
+            Each request could have between 0 (no quotes to return) to X (one for each client that has quotes) number of postbacks. 
+            If this is set to true, then PostbackUrl property MUST contain a valid URL to post the responses to. 
+            </summary>
+            <remarks>
+            If this is set to true but PostbackUrl is null, then this is ignored.
+            </remarks>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageRequest.LoanRequest">
+            <summary>
+            The <see cref="T:com.LoanTek.API.Requests.MortgageLoanRequest"/> MortgageLoanRequest contains all the loan request details.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageRequest.CustomQuoteResponseJson">
+            <summary>
+            A customized Json object representing only the data fields that you want to be returned for each quote in the response. 
+            The base object used in the response is the <see cref="T:com.LoanTek.Quoting.IQuote"/>IQuote object and therefore the field names in the customized Json object must match the field names of an <see cref="T:com.LoanTek.Quoting.IQuote"/>IQuote object.
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse`1">
+            <summary>
+            Retures a List of <see cref="T:com.LoanTek.Quoting.IQuote"/>IQuote objects based on the data points of the passed in <see cref="T:LoanTek.Pricing.LoanRequests.LoanPricerLoanRequest"/> LoanPricerLoanRequest object. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse`1.ClientDefinedIdentifier">
+            <summary>
+            Unique Id provided by the client to track and lookup this request. Commonly referred to as the 'RequestId'.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse`1.PassThroughItems">
+            <summary>
+            Generic List of objects that the client can pass-through with the request and be returned unaltered in the response.
+            This can be a single word of information, number(s), a list of strings, or a complex object that the client wants to pass along with the request and be returned in the response. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse`1.PostbackUrl">
+            <summary>
+            The URL to post Quotes to. If null, then Quotes will be returned in the response. 
+            </summary>
+            <remarks>
+            If PostbackInchunks is set to true but this is null, then PostbackInchunks is ignored.
+            </remarks>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse`1.PostbackInchunks">
+            <summary>
+            True or False if the postback is to be split up into chunks. Each chunk should contain all the quotes for one Client. 
+            Each request could have between 0 (no quotes to return) to X (one for each client that has quotes) number of postbacks. 
+            If this is set to true, then PostbackUrl property MUST contain a valid URL to post the responses to. 
+            </summary>
+            <remarks>
+            If this is set to true but PostbackUrl is null, then this is ignored.
+            </remarks>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse`1.LoanTekDefinedIdentifier">
+            <summary>
+            Unique Id provided by LoanTek to track and lookup this response. Commonly referred to as the 'ResponseId'.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse`1.ExecutionTimeInMillisec">
+            <summary>
+            Total time in Milliseconds it took to execute this request
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse`1.TimeStamp">
+            <summary>
+            This timestamp represents when this response was created. It is the total time in Milliseconds since the UTC 'Epoch' date time (01/01/1970).  
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse`1.ApiEndPoint">
+            <summary>
+            The Api 'end-point' that executed this request. An end-point is defined as the namespace, controller, and http request method accessed. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse`1.CachedId">
+            <summary>
+            If any block of user quotes (a submission) are from a cache, then the number of cached submissions is returned. 
+            Format is cached# / total#, example: 1/3, meaning 1 out of the 3 submissions was cached.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse`1.Message">
+            <summary>
+            May hold additional information about the request or a possible error string if an exception was thrown while pricing the loan. 
+            </summary>
+            <remarks>
+            Any error string this may contain is considered a non-fatal exception and the overall request can still have an Http Status Code 200 'OK'. 
+            </remarks>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse`1.Status">
+            <summary>
+            The <see cref="T:com.LoanTek.Types.Processing.StatusType"/> Status of this request.
+            </summary>
+            <remarks>
+            If the Status is 'Cancelled' then the request failed to finish processing in the allotted time.
+            </remarks>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse`1.Submissions">
+            <summary>
+            List of <see cref="T:com.LoanTek.Quoting.ISubmission"/>IQuoteSubmissions. Each IQuoteSubmission (a submission) contains the quotes for one user, the user's quoting information, and the request id (ClientDefinedIdentifier).
+            </summary>
+            <remarks>
+            The collection of quotes being returned are IQuote objects by default, but the properties returned can be limited using the FullMortgageRequest.CustomQuoteResponseJson property.
+            </remarks>
+        </member>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse">
+            <summary>
+            Retures a List of <see cref="T:com.LoanTek.Quoting.IQuote"/>IQuote objects based on the data points of the passed in <see cref="T:LoanTek.Pricing.LoanRequests.LoanPricerLoanRequest"/> LoanPricerLoanRequest object. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse.ClientDefinedIdentifier">
+            <summary>
+            Unique Id provided by the client to track and lookup this request. Commonly referred to as the 'RequestId'.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse.PassThroughItems">
+            <summary>
+            Generic List of objects that the client can pass-through with the request and be returned unaltered in the response.
+            This can be a single word of information, number(s), a list of strings, or a complex object that the client wants to pass along with the request and be returned in the response. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse.PostbackUrl">
+            <summary>
+            The URL to post Quotes to. If null, then Quotes will be returned in the response. 
+            </summary>
+            <remarks>
+            If PostbackInchunks is set to true but this is null, then PostbackInchunks is ignored.
+            </remarks>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse.PostbackInchunks">
+            <summary>
+            True or False if the postback is to be split up into chunks. Each chunk should contain all the quotes for one Client. 
+            Each request could have between 0 (no quotes to return) to X (one for each client that has quotes) number of postbacks. 
+            If this is set to true, then PostbackUrl property MUST contain a valid URL to post the responses to. 
+            </summary>
+            <remarks>
+            If this is set to true but PostbackUrl is null, then this is ignored.
+            </remarks>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse.LoanTekDefinedIdentifier">
+            <summary>
+            Unique Id provided by LoanTek to track and lookup this response. Commonly referred to as the 'ResponseId'.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse.ExecutionTimeInMillisec">
+            <summary>
+            Total time in Milliseconds it took to execute this request
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse.TimeStamp">
+            <summary>
+            This timestamp represents when this response was created. It is the total time in Milliseconds since the UTC 'Epoch' date time (01/01/1970).  
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse.ApiEndPoint">
+            <summary>
+            The Api 'end-point' that executed this request. An end-point is defined as the namespace, controller, and http request method accessed. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse.CachedId">
+            <summary>
+            If any block of user quotes (a submission) are from a cache, then the number of cached submissions is returned. 
+            Format is cached# / total#, example: 1/3, meaning 1 out of the 3 submissions was cached.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse.Message">
+            <summary>
+            May hold additional information about the request or a possible error string if an exception was thrown while pricing the loan. 
+            </summary>
+            <remarks>
+            Any error string this may contain is considered a non-fatal exception and the overall request can still have an Http Status Code 200 'OK'. 
+            </remarks>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse.Status">
+            <summary>
+            The <see cref="T:com.LoanTek.Types.Processing.StatusType"/> Status of this request.
+            </summary>
+            <remarks>
+            If the Status is 'Cancelled' then the request failed to finish processing in the allotted time.
+            </remarks>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageResponse.Submissions">
+            <summary>
+            List of <see cref="T:com.LoanTek.Quoting.ISubmission"/>IQuoteSubmissions. Each IQuoteSubmission (a submission) contains the quotes for one user, the user's quoting information, and the request id (ClientDefinedIdentifier).
+            </summary>
+            <remarks>
+            The collection of quotes being returned are IQuote objects by default, but the properties returned can be limited using the FullMortgageRequest.CustomQuoteResponseJson property.
+            </remarks>
+        </member>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Models.DummyData">
+            <summary>
+            Class for generating or querying dummy or test data
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Models.IPartnerRequest">
+            <summary>
+            Interface for ALL Partner requests.
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.IPartnerRequest.PostbackUrl">
+            <summary>
+            The URL to post Quotes to. If null, then Quotes will be returned in the response. 
+            </summary>
+            <remarks>
+            If PostbackInchunks is set to true but this is null, then PostbackInchunks is ignored.
+            </remarks>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.IPartnerRequest.PostbackInChunks">
+            <summary>
+            True or False if the postback is to be split up into chunks. Each chunk should contain all the quotes for one Client. 
+            Each request could have between 0 (no quotes to return) to X (one for each client that has quotes) number of postbacks. 
+            If this is set to true, then PostbackUrl property MUST contain a valid URL to post the responses to. 
+            </summary>
+            <remarks>
+            If this is set to true but PostbackUrl is null, then this is ignored.
+            </remarks>
+        </member>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Models.IPartnerResponse">
+            <summary>
+            Interface for ALL Partner responses.
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Models.Mortgage.FullMortgageRequest">
+            <summary>
+            A Full Mortgage Request inherits and wraps a <see cref="T:com.LoanTek.Quoting.Mortgage.Common.MortgageRequest"/> MortgageRequest object. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Mortgage.FullMortgageRequest.PassThroughItems">
+            <summary>
+            Generic List of objects that the client can pass-through with the request and be returned unaltered in the response.
+            This can be a single word of information, number(s), a list of strings, or a complex object that the client wants to pass along with the request and be returned in the response. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Mortgage.FullMortgageRequest.CustomQuoteResponseJson">
+            <summary>
+            A customized Json object representing only the data fields that you want to be returned for each quote in the response. 
+            The base object used in the response is the <see cref="T:com.LoanTek.Quoting.Mortgage.Common.MortgageQuote"/>MortgageQuote object and therefore the field names in the customized Json object must match the field names of an <see cref="T:com.LoanTek.Quoting.Mortgage.Common.MortgageQuote"/>MortgageQuote object.
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Models.Mortgage.FullMortgageResponse`2">
+            <summary>
+            Retures a List of <see cref="T:com.LoanTek.Quoting.Mortgage.Common.MortgageQuote"/>MortgageQuote objects based on the data points of the passed in <see cref="T:LoanTek.Pricing.LoanRequests.LoanPricerLoanRequest"/> LoanPricerLoanRequest object. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Mortgage.FullMortgageResponse`2.PassThroughItems">
+            <summary>
+            Generic List of objects that the client can pass-through with the request and be returned unaltered in the response.
+            This can be a single word of information, number(s), a list of strings, or a complex object that the client wants to pass along with the request and be returned in the response. 
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Mortgage.FullMortgageResponse`2.TimeStamp">
+            <summary>
+            This timestamp represents when this response was created. It is the total time in Milliseconds since the UTC 'Epoch' date time (01/01/1970).  
+            </summary>
+        </member>
+        <member name="P:com.LoanTek.API.Pricing.Partners.Models.Mortgage.FullMortgageResponse`2.ApiEndPoint">
+            <summary>
+            The Api 'end-point' that executed this request. An end-point is defined as the namespace, controller, and http request method accessed. 
+            </summary>
+        </member>
+        <member name="T:com.LoanTek.API.Pricing.Partners.Models.AApiController">
+            <summary>
+            Wrapper class for ApiController providing some common properties and methods
+            </summary>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Models.AApiController.CommonChecks(com.LoanTek.API.Pricing.Partners.Models.Common.FullMortgageRequest,System.String)">
+            <summary>
+            Internal method that performs checks that should be common to most controller requests
+            </summary>
+            <param name="request"></param>
+            <param name="apiEndPoint"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Models.AApiController.Authorize(System.String,com.LoanTek.API.AuthToken,System.Int32)">
+            <summary>
+            This method can be overriden in a controller class to provide more specific Authorize for certain actions 
+            </summary>
+            <param name="endPoint"></param>
+            <param name="authTokenObject"></param>
+            <param name="partnerId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.LoanTek.API.Pricing.Partners.Models.AApiController.CommonProcesses(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Internal method that performs processes that should be common to most controller requests
+            </summary>
+            <param name="request">HttpRequestMessage</param>
+        </member>
+    </members>
+</doc>

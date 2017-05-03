@@ -1,0 +1,164 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{432C1CCA-FA1B-4E0D-80B1-B65F4E3619A3}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.LoanTek.API", "com.LoanTek.API\com.LoanTek.API.csproj", "{CE27486E-A0FC-4E1C-878A-F61F89360C1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pricing", "Pricing", "{3D483284-2380-4472-9753-7B675D155B3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.LoanTek.API.Common", "com.LoanTek.API.Common\com.LoanTek.API.Common.csproj", "{D56583E2-282F-4204-AA83-39D34D3E8E12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.LoanTek.API.Pricing.Clients", "com.LoanTek.API.Pricing.Clients\com.LoanTek.API.Pricing.Clients.csproj", "{4A4BDD8A-13EC-4729-95BC-564B2D3A9067}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3C858B34-25CD-4087-9023-BC6A9F426A96}"
+	ProjectSection(SolutionItems) = preProject
+		Performance1.psess = Performance1.psess
+		WebEssentials2015-Settings.json = WebEssentials2015-Settings.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.LoanTek.API.Pricing.Partners", "com.LoanTek.API.Pricing.Partners\com.LoanTek.API.Pricing.Partners.csproj", "{8F10332F-CC27-4936-91AA-352ED5890C48}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Leads", "Leads", "{2C756A5C-A632-4FB2-82D0-EE2564954EDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.LoanTek.API.Leads.Clients", "com.LoanTek.API.Leads.Clients\com.LoanTek.API.Leads.Clients.csproj", "{28AD8A8F-6ECD-456B-83D1-B2FBC3EDFE1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.LoanTek.API.Tests", "com.LoanTek.API.Tests\com.LoanTek.API.Tests.csproj", "{33A875DA-60D6-44D4-B2DF-96FEAE77EB95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.LoanTek.API.Leads.Facebook", "com.LoanTek.API.Leads.Facebook\com.LoanTek.API.Leads.Facebook.csproj", "{BB4666B1-8E6F-4221-8BA6-B88AC5B9FAB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.LoanTek.API.OwinWrapper", "com.LoanTek.API.OwinWrapper\com.LoanTek.API.OwinWrapper.csproj", "{D04731A2-7D64-4801-A4E0-06C0B4F95177}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.LoanTek.API.Demo", "com.LoanTek.API.Demo\com.LoanTek.API.Demo.csproj", "{BEFC6CCC-D66C-4AC3-AEC5-75164F5CCEA4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE27486E-A0FC-4E1C-878A-F61F89360C1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE27486E-A0FC-4E1C-878A-F61F89360C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE27486E-A0FC-4E1C-878A-F61F89360C1B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CE27486E-A0FC-4E1C-878A-F61F89360C1B}.Debug|x64.Build.0 = Debug|Any CPU
+		{CE27486E-A0FC-4E1C-878A-F61F89360C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE27486E-A0FC-4E1C-878A-F61F89360C1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE27486E-A0FC-4E1C-878A-F61F89360C1B}.Release|x64.ActiveCfg = Release|Any CPU
+		{CE27486E-A0FC-4E1C-878A-F61F89360C1B}.Release|x64.Build.0 = Release|Any CPU
+		{D56583E2-282F-4204-AA83-39D34D3E8E12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D56583E2-282F-4204-AA83-39D34D3E8E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D56583E2-282F-4204-AA83-39D34D3E8E12}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D56583E2-282F-4204-AA83-39D34D3E8E12}.Debug|x64.Build.0 = Debug|Any CPU
+		{D56583E2-282F-4204-AA83-39D34D3E8E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D56583E2-282F-4204-AA83-39D34D3E8E12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D56583E2-282F-4204-AA83-39D34D3E8E12}.Release|x64.ActiveCfg = Release|Any CPU
+		{D56583E2-282F-4204-AA83-39D34D3E8E12}.Release|x64.Build.0 = Release|Any CPU
+		{4A4BDD8A-13EC-4729-95BC-564B2D3A9067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A4BDD8A-13EC-4729-95BC-564B2D3A9067}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A4BDD8A-13EC-4729-95BC-564B2D3A9067}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4A4BDD8A-13EC-4729-95BC-564B2D3A9067}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A4BDD8A-13EC-4729-95BC-564B2D3A9067}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A4BDD8A-13EC-4729-95BC-564B2D3A9067}.Release|x64.ActiveCfg = Release|Any CPU
+		{8F10332F-CC27-4936-91AA-352ED5890C48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F10332F-CC27-4936-91AA-352ED5890C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F10332F-CC27-4936-91AA-352ED5890C48}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8F10332F-CC27-4936-91AA-352ED5890C48}.Debug|x64.Build.0 = Debug|Any CPU
+		{8F10332F-CC27-4936-91AA-352ED5890C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F10332F-CC27-4936-91AA-352ED5890C48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F10332F-CC27-4936-91AA-352ED5890C48}.Release|x64.ActiveCfg = Release|Any CPU
+		{8F10332F-CC27-4936-91AA-352ED5890C48}.Release|x64.Build.0 = Release|Any CPU
+		{28AD8A8F-6ECD-456B-83D1-B2FBC3EDFE1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28AD8A8F-6ECD-456B-83D1-B2FBC3EDFE1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28AD8A8F-6ECD-456B-83D1-B2FBC3EDFE1E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{28AD8A8F-6ECD-456B-83D1-B2FBC3EDFE1E}.Debug|x64.Build.0 = Debug|Any CPU
+		{28AD8A8F-6ECD-456B-83D1-B2FBC3EDFE1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28AD8A8F-6ECD-456B-83D1-B2FBC3EDFE1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28AD8A8F-6ECD-456B-83D1-B2FBC3EDFE1E}.Release|x64.ActiveCfg = Release|Any CPU
+		{28AD8A8F-6ECD-456B-83D1-B2FBC3EDFE1E}.Release|x64.Build.0 = Release|Any CPU
+		{33A875DA-60D6-44D4-B2DF-96FEAE77EB95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33A875DA-60D6-44D4-B2DF-96FEAE77EB95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33A875DA-60D6-44D4-B2DF-96FEAE77EB95}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{33A875DA-60D6-44D4-B2DF-96FEAE77EB95}.Debug|x64.Build.0 = Debug|Any CPU
+		{33A875DA-60D6-44D4-B2DF-96FEAE77EB95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33A875DA-60D6-44D4-B2DF-96FEAE77EB95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33A875DA-60D6-44D4-B2DF-96FEAE77EB95}.Release|x64.ActiveCfg = Release|Any CPU
+		{33A875DA-60D6-44D4-B2DF-96FEAE77EB95}.Release|x64.Build.0 = Release|Any CPU
+		{BB4666B1-8E6F-4221-8BA6-B88AC5B9FAB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB4666B1-8E6F-4221-8BA6-B88AC5B9FAB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB4666B1-8E6F-4221-8BA6-B88AC5B9FAB0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BB4666B1-8E6F-4221-8BA6-B88AC5B9FAB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB4666B1-8E6F-4221-8BA6-B88AC5B9FAB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB4666B1-8E6F-4221-8BA6-B88AC5B9FAB0}.Release|x64.ActiveCfg = Release|Any CPU
+		{D04731A2-7D64-4801-A4E0-06C0B4F95177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D04731A2-7D64-4801-A4E0-06C0B4F95177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D04731A2-7D64-4801-A4E0-06C0B4F95177}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D04731A2-7D64-4801-A4E0-06C0B4F95177}.Debug|x64.Build.0 = Debug|Any CPU
+		{D04731A2-7D64-4801-A4E0-06C0B4F95177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D04731A2-7D64-4801-A4E0-06C0B4F95177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D04731A2-7D64-4801-A4E0-06C0B4F95177}.Release|x64.ActiveCfg = Release|Any CPU
+		{D04731A2-7D64-4801-A4E0-06C0B4F95177}.Release|x64.Build.0 = Release|Any CPU
+		{BEFC6CCC-D66C-4AC3-AEC5-75164F5CCEA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEFC6CCC-D66C-4AC3-AEC5-75164F5CCEA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEFC6CCC-D66C-4AC3-AEC5-75164F5CCEA4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BEFC6CCC-D66C-4AC3-AEC5-75164F5CCEA4}.Debug|x64.Build.0 = Debug|Any CPU
+		{BEFC6CCC-D66C-4AC3-AEC5-75164F5CCEA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEFC6CCC-D66C-4AC3-AEC5-75164F5CCEA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEFC6CCC-D66C-4AC3-AEC5-75164F5CCEA4}.Release|x64.ActiveCfg = Release|Any CPU
+		{BEFC6CCC-D66C-4AC3-AEC5-75164F5CCEA4}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4A4BDD8A-13EC-4729-95BC-564B2D3A9067} = {3D483284-2380-4472-9753-7B675D155B3F}
+		{8F10332F-CC27-4936-91AA-352ED5890C48} = {3D483284-2380-4472-9753-7B675D155B3F}
+		{28AD8A8F-6ECD-456B-83D1-B2FBC3EDFE1E} = {2C756A5C-A632-4FB2-82D0-EE2564954EDA}
+		{BB4666B1-8E6F-4221-8BA6-B88AC5B9FAB0} = {2C756A5C-A632-4FB2-82D0-EE2564954EDA}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.bankrate.com:8080/tfs/enterprise
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = com.LoanTek.API\\com.LoanTek.API.csproj
+		SccProjectName1 = com.LoanTek.API
+		SccLocalPath1 = com.LoanTek.API
+		SccProjectUniqueName2 = com.LoanTek.API.Common\\com.LoanTek.API.Common.csproj
+		SccProjectName2 = com.LoanTek.API.Common
+		SccLocalPath2 = com.LoanTek.API.Common
+		SccProjectUniqueName3 = com.LoanTek.API.Pricing.Partners\\com.LoanTek.API.Pricing.Partners.csproj
+		SccProjectTopLevelParentUniqueName3 = com.LoanTek.APIs.sln
+		SccProjectName3 = com.LoanTek.API.Pricing.Partners
+		SccLocalPath3 = com.LoanTek.API.Pricing.Partners
+		SccProjectUniqueName4 = com.LoanTek.API.Leads.Clients\\com.LoanTek.API.Leads.Clients.csproj
+		SccProjectTopLevelParentUniqueName4 = com.LoanTek.APIs.sln
+		SccProjectName4 = com.LoanTek.API.Leads.Clients
+		SccLocalPath4 = com.LoanTek.API.Leads.Clients
+		SccProjectUniqueName5 = com.LoanTek.API.Tests\\com.LoanTek.API.Tests.csproj
+		SccProjectName5 = com.LoanTek.API.Tests
+		SccLocalPath5 = com.LoanTek.API.Tests
+		SccProjectUniqueName6 = com.LoanTek.API.Leads.Facebook\\com.LoanTek.API.Leads.Facebook.csproj
+		SccProjectTopLevelParentUniqueName6 = com.LoanTek.APIs.sln
+		SccProjectName6 = com.LoanTek.API.Leads.Facebook
+		SccLocalPath6 = com.LoanTek.API.Leads.Facebook
+		SccProjectUniqueName7 = com.LoanTek.API.Pricing.Clients\\com.LoanTek.API.Pricing.Clients.csproj
+		SccProjectTopLevelParentUniqueName7 = com.LoanTek.APIs.sln
+		SccProjectName7 = com.LoanTek.API.Pricing.Clients
+		SccLocalPath7 = com.LoanTek.API.Pricing.Clients
+		SccProjectUniqueName8 = com.LoanTek.API.OwinWrapper\\com.LoanTek.API.OwinWrapper.csproj
+		SccProjectName8 = com.LoanTek.API.OwinWrapper
+		SccLocalPath8 = com.LoanTek.API.OwinWrapper
+		SccProjectUniqueName9 = com.LoanTek.API.Demo\\com.LoanTek.API.Demo.csproj
+		SccProjectName9 = com.LoanTek.API.Demo
+		SccLocalPath9 = com.LoanTek.API.Demo
+	EndGlobalSection
+EndGlobal

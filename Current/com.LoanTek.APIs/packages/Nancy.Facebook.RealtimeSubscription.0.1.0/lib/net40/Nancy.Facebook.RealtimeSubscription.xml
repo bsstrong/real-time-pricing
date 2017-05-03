@@ -1,0 +1,495 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nancy.Facebook.RealtimeSubscription</name>
+    </assembly>
+    <members>
+        <member name="T:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions">
+            <summary>
+            Facebook Realtime Subscription API extensions methods.
+            </summary>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions.AsFacebookGetSubscription(Nancy.IResponseFormatter,System.String,System.Boolean)">
+            <summary>
+            Verifies the Facebook HTTP GET subscription and returns the approprite response.
+            </summary>
+            <param name="responseFormatter">The response formatter.</param>
+            <param name="verifyToken">The verify token.</param>
+            <param name="throwException">Indicates whether to throw exception if verification fails.</param>
+            <returns><see cref="T:Nancy.Response"/></returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions.AsFacebookGetSubscription(Nancy.IResponseFormatter,Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings,System.Boolean)">
+            <summary>
+            Verifies the Facebook HTTP GET subscription and returns the approprite response.
+            </summary>
+            <param name="responseFormatter">The response formatter.</param>
+            <param name="settings">The Facebook Realtime Subscription API settings.</param>
+            <param name="throwException">Indicates whether to throw exception if verification fails.</param>
+            <returns><see cref="T:Nancy.Response"/></returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions.AsFacebookPostSubscription(Nancy.IResponseFormatter,System.String,System.Action{System.Object},System.Boolean,System.Type,System.Func{System.String,System.Type,System.Object})">
+            <summary>
+             Verifies the Facebook HTTP POST subscription and calls the callback when a new notification is received.
+            </summary>
+            <param name="responseFormatter">The response formatter.</param>
+            <param name="appSecret">The Facebook app secret.</param>
+            <param name="callback">The callback to be called when a new notification is received.</param>
+            <param name="throwException">Indicates whether to throw exception if verification fails.</param>
+            <param name="resultType">The type to deserialize the json response into.</param>
+            <param name="jsonDeserializer">The json deserializer.</param>
+            <returns><see cref="T:Nancy.Response"/></returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions.AsFacebookPostSubscription(Nancy.IResponseFormatter,Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings,System.Action{System.Object},System.Boolean,System.Type,System.Func{System.String,System.Type,System.Object})">
+            <summary>
+             Verifies the Facebook HTTP POST subscription and calls the callback when a new notification is received.
+            </summary>
+            <param name="responseFormatter">The response formatter.</param>
+            <param name="settings">The Facebook Realtime Subscription API settings.</param>
+            <param name="callback">The callback to be called when a new notification is received.</param>
+            <param name="throwException">Indicates whether to throw exception if verification fails.</param>
+            <param name="resultType">The type to deserialize the json response into.</param>
+            <param name="jsonDeserializer">The json deserializer.</param>
+            <returns><see cref="T:Nancy.Response"/></returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions.SubscribeToFacebookRealtimeUpdates(Nancy.NancyModule,System.String,System.Func{Nancy.NancyContext,System.Boolean},System.Func{System.Object,Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings},System.Action{System.Object,System.Object},System.Boolean,System.Type,System.Func{System.String,System.Type,System.Object})">
+            <summary>
+            Subscribes to Facebook Realtime API.
+            </summary>
+            <param name="module">The <see cref="T:Nancy.NancyModule"/>.</param>
+            <param name="path">The route path.</param>
+            <param name="condition">The route condition.</param>
+            <param name="getSettings">Func to get <see cref="T:Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings"/>.</param>
+            <param name="callback">The callback to be called when a new notification is received.</param>
+            <param name="throwException">Indicates whether to throw exception if verification fails.</param>
+            <param name="resultType">The type ot deserialize json into.</param>
+            <param name="jsonDeserializer">The json deserializer.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions.SubscribeToFacebookRealtimeUpdates(Nancy.NancyModule,System.String,System.Func{Nancy.NancyContext,System.Boolean},Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings,System.Action{System.Object,System.Object},System.Boolean,System.Type,System.Func{System.String,System.Type,System.Object})">
+            <summary>
+            Subscribes to Facebook Realtime API.
+            </summary>
+            <param name="module">The <see cref="T:Nancy.NancyModule"/>.</param>
+            <param name="path">The route path.</param>
+            <param name="condition">The route condition.</param>
+            <param name="settings">The Facebook Realtime Subscription API settings.</param>
+            <param name="callback">The callback to be called when a new notification is received.</param>
+            <param name="throwException">Indicates whether to throw exception if verification fails.</param>
+            <param name="resultType">The type ot deserialize json into.</param>
+            <param name="jsonDeserializer">The json deserializer.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions.SubscribeToFacebookRealtimeUpdates(Nancy.NancyModule,System.String,System.Func{Nancy.NancyContext,System.Boolean},System.String,System.String,System.Action{System.Object,System.Object},System.Boolean,System.Type,System.Func{System.String,System.Type,System.Object})">
+            <summary>
+            Subscribes to Facebook Realtime API.
+            </summary>
+            <param name="module">The <see cref="T:Nancy.NancyModule"/>.</param>
+            <param name="path">The route path.</param>
+            <param name="condition">The route condition.</param>
+            <param name="appSecret">The Facebook app secret.</param>
+            <param name="verifyToken">The verify token.</param>
+            <param name="callback">The callback to be called when a new notification is received.</param>
+            <param name="throwException">Indicates whether to throw exception if verification fails.</param>
+            <param name="resultType">The type ot deserialize json into.</param>
+            <param name="jsonDeserializer">The json deserializer.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions.SubscribeToFacebookRealtimeUpdates(Nancy.NancyModule,System.String,System.Func{System.Object,Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings},System.Action{System.Object,System.Object},System.Boolean,System.Type,System.Func{System.String,System.Type,System.Object})">
+            <summary>
+            Subscribes to Facebook Realtime API.
+            </summary>
+            <param name="module">The <see cref="T:Nancy.NancyModule"/>.</param>
+            <param name="path">The route path.</param>
+            <param name="getSettings">Func to get <see cref="T:Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings"/>.</param>
+            <param name="callback">The callback to be called when a new notification is received.</param>
+            <param name="throwException">Indicates whether to throw exception if verification fails.</param>
+            <param name="resultType">The type ot deserialize json into.</param>
+            <param name="jsonDeserializer">The json deserializer.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions.SubscribeToFacebookRealtimeUpdates(Nancy.NancyModule,System.String,Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings,System.Action{System.Object,System.Object},System.Boolean,System.Type,System.Func{System.String,System.Type,System.Object})">
+            <summary>
+            Subscribes to Facebook Realtime API.
+            </summary>
+            <param name="module">The <see cref="T:Nancy.NancyModule"/>.</param>
+            <param name="path">The route path.</param>
+            <param name="settings">The Facebook Realtime Subscription API settings.</param>
+            <param name="callback">The callback to be called when a new notification is received.</param>
+            <param name="throwException">Indicates whether to throw exception if verification fails.</param>
+            <param name="resultType">The type ot deserialize json into.</param>
+            <param name="jsonDeserializer">The json deserializer.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions.SubscribeToFacebookRealtimeUpdates(Nancy.NancyModule,System.String,System.String,System.String,System.Action{System.Object,System.Object},System.Boolean,System.Type,System.Func{System.String,System.Type,System.Object})">
+            <summary>
+            Subscribes to Facebook Realtime API.
+            </summary>
+            <param name="module">The <see cref="T:Nancy.NancyModule"/>.</param>
+            <param name="path">The route path.</param>
+            <param name="appSecret">The Facebook app secret.</param>
+            <param name="verifyToken">The verify token.</param>
+            <param name="callback">The callback to be called when a new notification is received.</param>
+            <param name="throwException">Indicates whether to throw exception if verification fails.</param>
+            <param name="resultType">The type ot deserialize json into.</param>
+            <param name="jsonDeserializer">The json deserializer.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions.SubscribeToFacebookRealtimeUpdates(Nancy.NancyModule,System.String,Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings,System.Action{System.Object},System.Boolean,System.Type,System.Func{System.String,System.Type,System.Object})">
+            <summary>
+            Subscribes to Facebook Realtime API.
+            </summary>
+            <param name="module">The <see cref="T:Nancy.NancyModule"/>.</param>
+            <param name="path">The route path.</param>
+            <param name="settings">The Facebook Realtime Subscription API settings.</param>
+            <param name="callback">The callback to be called when a new notification is received.</param>
+            <param name="throwException">Indicates whether to throw exception if verification fails.</param>
+            <param name="resultType">The type ot deserialize json into.</param>
+            <param name="jsonDeserializer">The json deserializer.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions.SubscribeToFacebookRealtimeUpdates(Nancy.NancyModule,System.String,System.String,System.String,System.Action{System.Object},System.Boolean,System.Type,System.Func{System.String,System.Type,System.Object})">
+            <summary>
+            Subscribes to Facebook Realtime API.
+            </summary>
+            <param name="module">The <see cref="T:Nancy.NancyModule"/>.</param>
+            <param name="path">The route path.</param>
+            <param name="appSecret">The Facebook app secret.</param>
+            <param name="verifyToken">The verify token.</param>
+            <param name="callback">The callback to be called when a new notification is received.</param>
+            <param name="throwException">Indicates whether to throw exception if verification fails.</param>
+            <param name="resultType">The type ot deserialize json into.</param>
+            <param name="jsonDeserializer">The json deserializer.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions.SubscribeToFacebookRealtimeUpdates(Nancy.NancyModule,Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings,System.Action{System.Object},System.Boolean,System.Type,System.Func{System.String,System.Type,System.Object})">
+            <summary>
+            Subscribes to Facebook Realtime API.
+            </summary>
+            <param name="module">The <see cref="T:Nancy.NancyModule"/>.</param>
+            <param name="settings">The Facebook Realtime Subscription API settings.</param>
+            <param name="callback">The callback to be called when a new notification is received.</param>
+            <param name="throwException">Indicates whether to throw exception if verification fails.</param>
+            <param name="resultType">The type ot deserialize json into.</param>
+            <param name="jsonDeserializer">The json deserializer.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookRealtimeSubscriptionExtensions.SubscribeToFacebookRealtimeUpdates(Nancy.NancyModule,System.String,System.String,System.Action{System.Object},System.Boolean,System.Type,System.Func{System.String,System.Type,System.Object})">
+            <summary>
+            Subscribes to Facebook Realtime API.
+            </summary>
+            <param name="module">The <see cref="T:Nancy.NancyModule"/>.</param>
+            <param name="appSecret">The Facebook app secret.</param>
+            <param name="verifyToken">The verify token.</param>
+            <param name="callback">The callback to be called when a new notification is received.</param>
+            <param name="throwException">Indicates whether to throw exception if verification fails.</param>
+            <param name="resultType">The type ot deserialize json into.</param>
+            <param name="jsonDeserializer">The json deserializer.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookClient.VerifyGetSubscription(System.String,System.String,System.String,System.String)">
+            <summary>
+            Verify HTTP_X_HUB_SIGNATURE for HTTP GET.
+            </summary>
+            <param name="requestHubMode">The request hub.mode</param>
+            <param name="requestVerifyToken">The request hub.verify_token</param>
+            <param name="requestHubChallenge">The request hub.challenge</param>
+            <param name="verifyToken">Expected verify token.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookClient.VerifyPostSubscription(System.String,System.String,System.Type,System.String,System.Func{System.String,System.Type,System.Object})">
+            <summary>
+            Verify HTTP_X_HUB_SIGNATURE for HTTP POST.
+            </summary>
+            <param name="requestHttpXHubSignature">The request HTTP_X_HUB_SIGNATURE</param>
+            <param name="requestBody">The request body.</param>
+            <param name="resultType">The result type.</param>
+            <param name="appSecret">The App secret.</param>
+        </member>
+        <member name="T:Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings">
+            <summary>
+            Settings required for Facebook Realttime Subscription API.
+            </summary>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings"/>.
+            </summary>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings"/>.
+            </summary>
+            <param name="appSecret">The app secret.</param>
+            <param name="verifyToken">The verify token.</param>
+        </member>
+        <member name="P:Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings.AppSecret">
+            <summary>
+            The app secret.
+            </summary>
+        </member>
+        <member name="P:Nancy.Facebook.RealtimeSubscription.FacebookSubscriptionSettings.VerifyToken">
+            <summary>
+            The verify token.
+            </summary>
+        </member>
+        <member name="T:Nancy.Facebook.RealtimeSubscription.JsonArray">
+            <summary>
+            Represents the json array.
+            </summary>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonArray.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nancy.Facebook.RealtimeSubscription.JsonArray"/> class. 
+            </summary>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonArray.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nancy.Facebook.RealtimeSubscription.JsonArray"/> class. 
+            </summary>
+            <param name="capacity">The capacity of the json array.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonArray.ToString">
+            <summary>
+            The json representation of the array.
+            </summary>
+            <returns>The json representation of the array.</returns>
+        </member>
+        <member name="T:Nancy.Facebook.RealtimeSubscription.JsonObject">
+            <summary>
+            Represents the json object.
+            </summary>
+        </member>
+        <member name="F:Nancy.Facebook.RealtimeSubscription.JsonObject._members">
+            <summary>
+            The internal member dictionary.
+            </summary>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.Add(System.String,System.Object)">
+            <summary>
+            Adds the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.ContainsKey(System.String)">
+            <summary>
+            Determines whether the specified key contains key.
+            </summary>
+            <param name="key">The key.</param>
+            <returns>
+            	<c>true</c> if the specified key contains key; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.Remove(System.String)">
+            <summary>
+            Removes the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.TryGetValue(System.String,System.Object@)">
+            <summary>
+            Tries the get value.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.Add(System.Collections.Generic.KeyValuePair{System.String,System.Object})">
+            <summary>
+            Adds the specified item.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.Clear">
+            <summary>
+            Clears this instance.
+            </summary>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.Contains(System.Collections.Generic.KeyValuePair{System.String,System.Object})">
+            <summary>
+            Determines whether [contains] [the specified item].
+            </summary>
+            <param name="item">The item.</param>
+            <returns>
+            	<c>true</c> if [contains] [the specified item]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.Object}[],System.Int32)">
+            <summary>
+            Copies to.
+            </summary>
+            <param name="array">The array.</param>
+            <param name="arrayIndex">Index of the array.</param>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.Remove(System.Collections.Generic.KeyValuePair{System.String,System.Object})">
+            <summary>
+            Removes the specified item.
+            </summary>
+            <param name="item">The item.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.ToString">
+            <summary>
+            Returns a json <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </summary>
+            <returns>
+            A json <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.TryConvert(System.Dynamic.ConvertBinder,System.Object@)">
+            <summary>
+            Provides implementation for type conversion operations. Classes derived from the <see cref="T:System.Dynamic.DynamicObject"/> class can override this method to specify dynamic behavior for operations that convert an object from one type to another.
+            </summary>
+            <param name="binder">Provides information about the conversion operation. The binder.Type property provides the type to which the object must be converted. For example, for the statement (String)sampleObject in C# (CType(sampleObject, Type) in Visual Basic), where sampleObject is an instance of the class derived from the <see cref="T:System.Dynamic.DynamicObject"/> class, binder.Type returns the <see cref="T:System.String"/> type. The binder.Explicit property provides information about the kind of conversion that occurs. It returns true for explicit conversion and false for implicit conversion.</param>
+            <param name="result">The result of the type conversion operation.</param>
+            <returns>
+            Alwasy returns true.
+            </returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.TryDeleteMember(System.Dynamic.DeleteMemberBinder)">
+            <summary>
+            Provides the implementation for operations that delete an object member. This method is not intended for use in C# or Visual Basic.
+            </summary>
+            <param name="binder">Provides information about the deletion.</param>
+            <returns>
+            Alwasy returns true.
+            </returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.TryGetIndex(System.Dynamic.GetIndexBinder,System.Object[],System.Object@)">
+            <summary>
+            Provides the implementation for operations that get a value by index. Classes derived from the <see cref="T:System.Dynamic.DynamicObject"/> class can override this method to specify dynamic behavior for indexing operations.
+            </summary>
+            <param name="binder">Provides information about the operation.</param>
+            <param name="indexes">The indexes that are used in the operation. For example, for the sampleObject[3] operation in C# (sampleObject(3) in Visual Basic), where sampleObject is derived from the DynamicObject class, <paramref name="indexes"/> is equal to 3.</param>
+            <param name="result">The result of the index operation.</param>
+            <returns>
+            Alwasy returns true.
+            </returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            Provides the implementation for operations that get member values. Classes derived from the <see cref="T:System.Dynamic.DynamicObject"/> class can override this method to specify dynamic behavior for operations such as getting a value for a property.
+            </summary>
+            <param name="binder">Provides information about the object that called the dynamic operation. The binder.Name property provides the name of the member on which the dynamic operation is performed. For example, for the Console.WriteLine(sampleObject.SampleProperty) statement, where sampleObject is an instance of the class derived from the <see cref="T:System.Dynamic.DynamicObject"/> class, binder.Name returns "SampleProperty". The binder.IgnoreCase property specifies whether the member name is case-sensitive.</param>
+            <param name="result">The result of the get operation. For example, if the method is called for a property, you can assign the property value to <paramref name="result"/>.</param>
+            <returns>
+            Alwasy returns true.
+            </returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.TrySetIndex(System.Dynamic.SetIndexBinder,System.Object[],System.Object)">
+            <summary>
+            Provides the implementation for operations that set a value by index. Classes derived from the <see cref="T:System.Dynamic.DynamicObject"/> class can override this method to specify dynamic behavior for operations that access objects by a specified index.
+            </summary>
+            <param name="binder">Provides information about the operation.</param>
+            <param name="indexes">The indexes that are used in the operation. For example, for the sampleObject[3] = 10 operation in C# (sampleObject(3) = 10 in Visual Basic), where sampleObject is derived from the <see cref="T:System.Dynamic.DynamicObject"/> class, <paramref name="indexes"/> is equal to 3.</param>
+            <param name="value">The value to set to the object that has the specified index. For example, for the sampleObject[3] = 10 operation in C# (sampleObject(3) = 10 in Visual Basic), where sampleObject is derived from the <see cref="T:System.Dynamic.DynamicObject"/> class, <paramref name="value"/> is equal to 10.</param>
+            <returns>
+            true if the operation is successful; otherwise, false. If this method returns false, the run-time binder of the language determines the behavior. (In most cases, a language-specific run-time exception is thrown.
+            </returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.TrySetMember(System.Dynamic.SetMemberBinder,System.Object)">
+            <summary>
+            Provides the implementation for operations that set member values. Classes derived from the <see cref="T:System.Dynamic.DynamicObject"/> class can override this method to specify dynamic behavior for operations such as setting a value for a property.
+            </summary>
+            <param name="binder">Provides information about the object that called the dynamic operation. The binder.Name property provides the name of the member to which the value is being assigned. For example, for the statement sampleObject.SampleProperty = "Test", where sampleObject is an instance of the class derived from the <see cref="T:System.Dynamic.DynamicObject"/> class, binder.Name returns "SampleProperty". The binder.IgnoreCase property specifies whether the member name is case-sensitive.</param>
+            <param name="value">The value to set to the member. For example, for sampleObject.SampleProperty = "Test", where sampleObject is an instance of the class derived from the <see cref="T:System.Dynamic.DynamicObject"/> class, the <paramref name="value"/> is "Test".</param>
+            <returns>
+            true if the operation is successful; otherwise, false. If this method returns false, the run-time binder of the language determines the behavior. (In most cases, a language-specific run-time exception is thrown.)
+            </returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.JsonObject.GetDynamicMemberNames">
+            <summary>
+            Returns the enumeration of all dynamic member names.
+            </summary>
+            <returns>
+            A sequence that contains dynamic member names.
+            </returns>
+        </member>
+        <member name="P:Nancy.Facebook.RealtimeSubscription.JsonObject.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:System.Object"/> at the specified index.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Nancy.Facebook.RealtimeSubscription.JsonObject.Keys">
+            <summary>
+            Gets the keys.
+            </summary>
+            <value>The keys.</value>
+        </member>
+        <member name="P:Nancy.Facebook.RealtimeSubscription.JsonObject.Values">
+            <summary>
+            Gets the values.
+            </summary>
+            <value>The values.</value>
+        </member>
+        <member name="P:Nancy.Facebook.RealtimeSubscription.JsonObject.Item(System.String)">
+            <summary>
+            Gets or sets the <see cref="T:System.Object"/> with the specified key.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Nancy.Facebook.RealtimeSubscription.JsonObject.Count">
+            <summary>
+            Gets the count.
+            </summary>
+            <value>The count.</value>
+        </member>
+        <member name="P:Nancy.Facebook.RealtimeSubscription.JsonObject.IsReadOnly">
+            <summary>
+            Gets a value indicating whether this instance is read only.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is read only; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Nancy.Facebook.RealtimeSubscription.SimpleJson">
+            <summary>
+            This class encodes and decodes JSON strings.
+            Spec. details, see http://www.json.org/
+            
+            JSON uses Arrays and Objects. These correspond here to the datatypes JsonArray(IList&lt;object>) and JsonObject(IDictionary&lt;string,object>).
+            All numbers are parsed to doubles.
+            </summary>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.SimpleJson.DeserializeObject(System.String)">
+            <summary>
+            Parses the string json into a value
+            </summary>
+            <param name="json">A JSON string.</param>
+            <returns>An IList&lt;object>, a IDictionary&lt;string,object>, a double, a string, null, true, or false</returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.SimpleJson.TryDeserializeObject(System.String,System.Object@)">
+            <summary>
+            Try parsing the json string into a value.
+            </summary>
+            <param name="json">
+            A JSON string.
+            </param>
+            <param name="obj">
+            The object.
+            </param>
+            <returns>
+            Returns true if successfull otherwise false.
+            </returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.SimpleJson.SerializeObject(System.Object,Nancy.Facebook.RealtimeSubscription.IJsonSerializerStrategy)">
+            <summary>
+            Converts a IDictionary&lt;string,object> / IList&lt;object> object into a JSON string
+            </summary>
+            <param name="json">A IDictionary&lt;string,object> / IList&lt;object></param>
+            <param name="jsonSerializerStrategy">Serializer strategy to use</param>
+            <returns>A JSON encoded string, or null if object 'json' is not serializable</returns>
+        </member>
+        <member name="M:Nancy.Facebook.RealtimeSubscription.SimpleJson.IsNumeric(System.Object)">
+            <summary>
+            Determines if a given object is numeric in any way
+            (can be integer, double, null, etc).
+            </summary>
+        </member>
+    </members>
+</doc>

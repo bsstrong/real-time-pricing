@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Publish\com.LoanTek.API.Leads.Clients</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/BoneSoft.CSS.dll">
+      <publishTime>09/08/2016 11:13:25</publishTime>
+    </File>
+    <File Include="bin/Bytescout.Spreadsheet.dll">
+      <publishTime>09/08/2016 11:13:29</publishTime>
+    </File>
+    <File Include="bin/CacheManager.Core.dll">
+      <publishTime>02/06/2017 09:49:58</publishTime>
+    </File>
+    <File Include="bin/CacheManager.Serialization.Json.dll">
+      <publishTime>02/06/2017 09:49:58</publishTime>
+    </File>
+    <File Include="bin/CacheManager.StackExchange.Redis.dll">
+      <publishTime>02/06/2017 09:49:58</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.API.Common.dll">
+      <publishTime>04/27/2017 10:17:03</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.API.dll">
+      <publishTime>04/27/2017 10:17:00</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.API.Leads.Clients.dll">
+      <publishTime>04/27/2017 10:17:07</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.Biz.dll">
+      <publishTime>04/13/2017 15:24:30</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.Caching.dll">
+      <publishTime>03/23/2017 08:59:35</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.Connect2._1.dll">
+      <publishTime>09/08/2016 11:13:25</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.CRM.dll">
+      <publishTime>04/12/2017 10:26:32</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.Forms.dll">
+      <publishTime>03/31/2017 12:05:34</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.Global.dll">
+      <publishTime>03/29/2017 09:02:26</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.IData.dll">
+      <publishTime>03/03/2017 08:35:05</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.Master.Data.dll">
+      <publishTime>04/26/2017 12:15:09</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.Master.dll">
+      <publishTime>04/13/2017 14:34:17</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.Quoting.dll">
+      <publishTime>04/13/2017 13:00:34</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.Quoting.Mortgage.dll">
+      <publishTime>04/13/2017 13:00:35</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.Rates.dll">
+      <publishTime>12/09/2016 08:23:27</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.Rules.dll">
+      <publishTime>12/09/2016 08:23:27</publishTime>
+    </File>
+    <File Include="bin/com.LoanTek.Types.dll">
+      <publishTime>04/13/2017 13:00:35</publishTime>
+    </File>
+    <File Include="bin/LoanTek.BusinessObjects.dll">
+      <publishTime>04/24/2017 09:15:18</publishTime>
+    </File>
+    <File Include="bin/LoanTek.LoggingObjects.dll">
+      <publishTime>03/23/2017 08:59:35</publishTime>
+    </File>
+    <File Include="bin/LoanTek.Messaging.dll">
+      <publishTime>12/09/2016 08:23:27</publishTime>
+    </File>
+    <File Include="bin/LoanTek.Pricing.dll">
+      <publishTime>04/26/2017 16:14:05</publishTime>
+    </File>
+    <File Include="bin/LoanTek.Profile.dll">
+      <publishTime>04/20/2017 09:16:15</publishTime>
+    </File>
+    <File Include="bin/LoanTek.SchemaDefinitions.dll">
+      <publishTime>04/24/2017 09:13:49</publishTime>
+    </File>
+    <File Include="bin/LoanTek.Utilities.dll">
+      <publishTime>04/20/2017 14:24:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>07/08/2016 11:30:22</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>04/01/2016 13:24:03</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>04/19/2017 12:20:54</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>04/01/2016 13:24:03</publishTime>
+    </File>
+    <File Include="bin/Rebex.Common.dll">
+      <publishTime>09/08/2016 11:13:37</publishTime>
+    </File>
+    <File Include="bin/Rebex.Networking.dll">
+      <publishTime>09/08/2016 11:13:37</publishTime>
+    </File>
+    <File Include="bin/Rebex.Sftp.dll">
+      <publishTime>09/08/2016 11:13:37</publishTime>
+    </File>
+    <File Include="bin/RestSharp.dll">
+      <publishTime>09/08/2016 11:13:37</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>07/08/2016 11:30:23</publishTime>
+    </File>
+    <File Include="bin/SautinSoft.PdfFocus.dll">
+      <publishTime>10/03/2016 00:45:02</publishTime>
+    </File>
+    <File Include="bin/SendGrid.dll">
+      <publishTime>07/08/2016 11:30:22</publishTime>
+    </File>
+    <File Include="bin/SendGrid.SmtpApi.dll">
+      <publishTime>07/08/2016 11:30:22</publishTime>
+    </File>
+    <File Include="bin/SendGridMail.dll">
+      <publishTime>07/08/2016 11:30:22</publishTime>
+    </File>
+    <File Include="bin/StackExchange.Redis.StrongName.dll">
+      <publishTime>03/03/2017 08:35:05</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>04/01/2016 13:24:03</publishTime>
+    </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>11/21/2016 10:19:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Cors.dll">
+      <publishTime>04/01/2016 13:24:03</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>04/01/2016 13:24:03</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>04/01/2016 13:24:03</publishTime>
+    </File>
+    <File Include="bin/Twilio.Api.dll">
+      <publishTime>09/08/2016 11:13:38</publishTime>
+    </File>
+    <File Include="bin/WebApiThrottle.dll">
+      <publishTime>03/03/2017 11:18:16</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>05/03/2016 16:10:33</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>03/31/2017 12:04:13</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/26/2017 13:12:34</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
